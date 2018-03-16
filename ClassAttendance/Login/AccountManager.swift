@@ -42,6 +42,7 @@ class AccountManager {
             DataBaseManager.shared.checkUser(identifier: phoneNum, password: password, handler: { (result) in
                 switch result {
                 case .success:
+                    UserDefaults.standard.set(phoneNum, forKey: kCurrentAccountKey)
                     compeletionHandler(.success)
                 case .failure(let error):
                     compeletionHandler(.failure(error))
