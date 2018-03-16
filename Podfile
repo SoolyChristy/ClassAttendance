@@ -9,6 +9,7 @@ target 'ClassAttendance' do
 
   pod 'SnapKit'
   pod 'WCDB.swift'
+  pod 'Toast-Swift', '~> 3.0.1'
 
   target 'ClassAttendanceTests' do
     inherit! :search_paths

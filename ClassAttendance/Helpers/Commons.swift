@@ -9,8 +9,12 @@
 import Foundation
 import UIKit
 import SnapKit
+import Toast_Swift
 
-let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+let kDocumentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+let kCachesPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
+
+let keyWindow = UIApplication.shared.keyWindow
 
 public func scale(iPhone8Design x: CGFloat) -> CGFloat {
   return x * kScale

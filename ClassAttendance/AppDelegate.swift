@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.rootViewController = MainViewController()
         window?.makeKeyAndVisible()
+        AccountManager.shared.appFinishLaunching()
         return true
     }
 

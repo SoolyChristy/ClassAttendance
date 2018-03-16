@@ -98,7 +98,30 @@ extension SignUpViewController: UITextFieldDelegate {
 
 extension SignUpViewController {
     @objc private func signUpBtnAction() {
-        
+        if let name = nameFiled.textField.text,
+            let phoneStr = phoneFiled.textField.text,
+            let phone = Int(phoneStr),
+            let psw = passwordFiled.textField.text {
+            AccountManager.shared.register(userName: name, phoneNum: phone, password: psw, compeletionHandler: { (result) in
+                switch result {
+                case .success:
+                    keyWindow?.makeToast("注册成功！")
+                    self.navigationController?.popViewController(animated: true)
+                case .failure(let error):
+                    var info = ""
+                    switch error {
+                    case .nickNameRepeat:
+                        info = "用户名重复"
+                    case .phoneNumRepeat:
+                        info = "手机号重复"
+                    default:
+                        info = "注册失败！请稍后重试"
+                    }
+                    self.view.hideToast()
+                    self.view.makeToast(info)
+                }
+            })
+        }
     }
     
     @objc private func tipBtnAction() {

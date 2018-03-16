@@ -27,7 +27,11 @@ struct User: TableCodable {
         case phoneNum
         
         static var columnConstraintBindings: [CodingKeys: ColumnConstraintBinding]? {
-            return [identifier: ColumnConstraintBinding(isPrimary: true)]
+            return [
+                identifier: ColumnConstraintBinding(isPrimary: true),
+                phoneNum: ColumnConstraintBinding(isUnique: true),
+                userName: ColumnConstraintBinding(isUnique: true)
+            ]
         }
     }
 }

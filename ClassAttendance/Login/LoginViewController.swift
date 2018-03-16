@@ -54,6 +54,7 @@ class LoginViewController: BaseViewController {
         }
         
         let loginBtn = UIButton.customButton(title: "登录")
+        loginBtn.addTarget(self, action: #selector(loginBtnAction), for: .touchUpInside)
         view.addSubview(loginBtn)
         loginBtn.snp.makeConstraints { (make) in
             make.top.equalTo(passwordFiled.snp.bottom).offset(scale(iPhone8Design: 24))
@@ -84,7 +85,7 @@ class LoginViewController: BaseViewController {
         registerBtn.addTarget(self, action: #selector(registerBtnAction), for: .touchUpInside)
     }
     
-    private let nameFiled = InputView.inputView(placeholderImage: #imageLiteral(resourceName: "ic_nickname"), placeholderText: "用户名")
+    private let nameFiled = InputView.inputView(placeholderImage: #imageLiteral(resourceName: "ic_nickname"), placeholderText: "手机号")
     private let passwordFiled = InputView.inputView(placeholderImage: #imageLiteral(resourceName: "ic_password"), placeholderText: "密码")
 }
 
@@ -98,6 +99,29 @@ extension LoginViewController: UITextFieldDelegate {
 }
 
 extension LoginViewController {
+    @objc private func loginBtnAction() {
+        if let nickName = nameFiled.textField.text,
+            let psw = passwordFiled.textField.text {
+            AccountManager.shared.login(userName: nickName, password: psw, compeletionHandler: { (result) in
+                keyWindow?.hideToast()
+                switch result {
+                case .success:
+                    keyWindow?.makeToast("登录成功！")
+                    dismiss(animated: true)
+                case .failure(let error):
+                    switch error {
+                    case .userDoNotExist:
+                        keyWindow?.makeToast("用户不存在！")
+                    case .wrongPassword:
+                        keyWindow?.makeToast("密码错误！")
+                    default:
+                        keyWindow?.makeToast("登录失败！")
+                    }
+                }
+            })
+        }
+    }
+    
     @objc private func registerBtnAction() {
         navigationController?.pushViewController(SignUpViewController(), animated: true)
     }

@@ -13,8 +13,8 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "首页"
-        let vc = NavViewController(rootViewController: LoginViewController())
-        present(vc, animated: true)
+//        let vc = NavViewController(rootViewController: LoginViewController())
+//        present(vc, animated: true)
     }
     
 }
