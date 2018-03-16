@@ -1,0 +1,17 @@
+PODS:
+  - SnapKit (4.0.0)
+  - WCDB.swift (1.0.6):
+    - WCDB.swift/sqlcipher (= 1.0.6)
+  - WCDB.swift/sqlcipher (1.0.6)
+
+DEPENDENCIES:
+  - SnapKit
+  - WCDB.swift
+
+SPEC CHECKSUMS:
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  WCDB.swift: 5bb038bc5bb46067cccc7c48392e8f4c4a15def0
+
+PODFILE CHECKSUM: 74d2d52b5e1c5949fbce956703f184301d96d434
+
+COCOAPODS: 1.4.0

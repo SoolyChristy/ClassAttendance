@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="MF1-uH-0Ob" customClass="InputView" customModule="ClassAttendance" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_nickname" translatesAutoresizingMaskIntoConstraints="NO" id="WVd-1N-vc6">
+                    <rect key="frame" x="12" y="32" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="Ckz-al-hbv"/>
+                        <constraint firstAttribute="width" constant="24" id="FKe-OG-k3L"/>
+                    </constraints>
+                </imageView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U33-eW-D4a">
+                    <rect key="frame" x="48" y="34" width="315" height="20"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="WVd-1N-vc6" firstAttribute="leading" secondItem="MF1-uH-0Ob" secondAttribute="leading" constant="12" id="8Lf-Fs-soW"/>
+                <constraint firstItem="U33-eW-D4a" firstAttribute="centerY" secondItem="WVd-1N-vc6" secondAttribute="centerY" id="EVr-o0-hln"/>
+                <constraint firstItem="U33-eW-D4a" firstAttribute="leading" secondItem="WVd-1N-vc6" secondAttribute="trailing" constant="12" id="TG9-6w-mTx"/>
+                <constraint firstItem="h33-u1-dDe" firstAttribute="trailing" secondItem="U33-eW-D4a" secondAttribute="trailing" constant="12" id="VGZ-bv-tWT"/>
+                <constraint firstItem="WVd-1N-vc6" firstAttribute="top" secondItem="h33-u1-dDe" secondAttribute="top" constant="12" id="bDw-Ht-vpb"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="h33-u1-dDe"/>
+            <connections>
+                <outlet property="iconView" destination="WVd-1N-vc6" id="0x5-ZV-xzK"/>
+                <outlet property="textField" destination="U33-eW-D4a" id="qli-5I-gmu"/>
+            </connections>
+            <point key="canvasLocation" x="-348" y="-278"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_nickname" width="32" height="32"/>
+    </resources>
+</document>
