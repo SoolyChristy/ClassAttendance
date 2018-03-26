@@ -36,4 +36,15 @@ public func printLog<T>(_ message: T,
   #endif
 }
 
+public func colorToImage(color: UIColor) -> UIImage {
+    let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+    UIGraphicsBeginImageContext(rect.size)
+    let context = UIGraphicsGetCurrentContext()
+    context!.setFillColor(color.cgColor)
+    context!.fill(rect)
+    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return image ?? UIImage()
+}
+
 private let kScale = UIScreen.main.bounds.width / 375.0

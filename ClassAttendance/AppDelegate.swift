@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toast_Swift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,11 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        DataBaseManager.shared.appFinishLaunching()
+        DatabaseManager.shared.appFinishLaunching()
         window = UIWindow()
         window?.rootViewController = MainViewController()
         window?.makeKeyAndVisible()
         AccountManager.shared.appFinishLaunching()
+        ToastManager.shared.style.verticalPadding = scale(iPhone8Design: 20)
         return true
     }
 

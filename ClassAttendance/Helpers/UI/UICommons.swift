@@ -8,7 +8,8 @@
 
 import UIKit
 
-let mainColor = rgbColor(0xff3498db)
+//let mainColor = rgbColor(0xff3498db)
+let mainColor = rgbColor(0xffffaf00)
 
 extension UILabel {
 
@@ -23,12 +24,15 @@ extension UILabel {
 extension UIButton {
     public class func customButton(title: String) -> UIButton {
         let btn = UIButton()
+        let normalBg = colorToImage(color: mainColor)
+        let highlightBg = colorToImage(color: mainColor.withAlphaComponent(0.8))
+        btn.setBackgroundImage(normalBg, for: .normal)
+        btn.setBackgroundImage(highlightBg, for: .highlighted)
         btn.widthAnchor.constraint(equalToConstant: scale(iPhone8Design: 280)).isActive = true
         btn.heightAnchor.constraint(equalToConstant: scale(iPhone8Design: 38)).isActive = true
         btn.setTitle(title, for: .normal)
         btn.setTitleColor(.white, for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: scale(iPhone8Design: 15))
-        btn.backgroundColor = mainColor
         btn.layer.cornerRadius = 38 / 2
         btn.layer.masksToBounds = true
         return btn

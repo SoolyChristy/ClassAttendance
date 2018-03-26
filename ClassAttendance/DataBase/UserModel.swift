@@ -9,6 +9,8 @@
 import Foundation
 import WCDBSwift
 
+public typealias ClassDate = [Int: Date]
+
 /// 用户
 struct User: TableCodable {
     var identifier: Int?
@@ -57,6 +59,7 @@ struct Lesson: TableCodable {
 struct Class: TableCodable {
     var name: String?
     var lesson: String?
+    var date: ClassDate?
     var students: [Student]?
     var attendanceSheets: [AttendanceRecord]?
     
@@ -64,6 +67,7 @@ struct Class: TableCodable {
         typealias Root = Class
         static let objectRelationalMapping = TableBinding(CodingKeys.self)
         case name
+        case date
         case students
         case lesson
         case attendanceSheets
@@ -78,6 +82,7 @@ struct Class: TableCodable {
 struct Student: TableCodable {
     var name: String?
     var id: Int?
+    var phone: Int?
     var icon: String?
     var late: [AttendanceDetail]?
     var absenteeism: [AttendanceDetail]?
@@ -89,6 +94,7 @@ struct Student: TableCodable {
         static let objectRelationalMapping = TableBinding(CodingKeys.self)
         case name
         case id
+        case phone
         case icon
         case late
         case absenteeism

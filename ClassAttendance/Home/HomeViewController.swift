@@ -12,9 +12,18 @@ class HomeViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "首页"
-//        let vc = NavViewController(rootViewController: LoginViewController())
-//        present(vc, animated: true)
+        setupUI()
     }
     
+    private func setupUI() {
+        navigationItem.title = "首页"
+        let addClassItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addClassBtnAction))
+        navigationItem.rightBarButtonItem = addClassItem
+    }
+}
+
+extension HomeViewController {
+    @objc private func addClassBtnAction() {
+        navigationController?.pushViewController(CreatClassController(), animated: true)
+    }
 }

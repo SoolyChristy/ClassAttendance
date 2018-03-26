@@ -18,19 +18,19 @@ class AccountManager {
         guard let id = UserDefaults.standard.object(forKey: kCurrentAccountKey) as? Int else {
             return nil
         }
-        return DataBaseManager.shared.getUser(identifier: id)
+        return DatabaseManager.shared.getUser(identifier: id)
     }()
     
     public func appFinishLaunching() {
         guard let _ = currentUser else {
             let loginVc = NavViewController(rootViewController: LoginViewController())
-            UIApplication.shared.keyWindow?.rootViewController?.present(loginVc, animated: false)
+            keyWindow?.rootViewController?.present(loginVc, animated: false)
             return
         }
     }
     
     public func register(userName: String, phoneNum: Int, password: String, compeletionHandler: Handler<DBError>?) {
-        DataBaseManager.shared.creatUser(identifier: phoneNum,
+        DatabaseManager.shared.creatUser(identifier: phoneNum,
                                          userName: userName,
                                          phoneNum: phoneNum,
                                          password: password,
@@ -39,7 +39,7 @@ class AccountManager {
     
     public func login(userName: String, password: String, compeletionHandler: Handler<DBError>) {
         if let phoneNum = Int(userName) {
-            DataBaseManager.shared.checkUser(identifier: phoneNum, password: password, handler: { (result) in
+            DatabaseManager.shared.checkUser(identifier: phoneNum, password: password, handler: { (result) in
                 switch result {
                 case .success:
                     UserDefaults.standard.set(phoneNum, forKey: kCurrentAccountKey)
@@ -48,6 +48,8 @@ class AccountManager {
                     compeletionHandler(.failure(error))
                 }
             })
+        } else {
+            compeletionHandler(.failure(.userIsNotLegal))
         }
     }
 

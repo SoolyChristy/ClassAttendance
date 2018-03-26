@@ -1,5 +1,5 @@
 //
-//  DataBaseManager.swift
+//  DatabaseManager.swift
 //  ClassAttendance
 //
 //  Created by SoolyChristina on 2018/3/15.
@@ -19,6 +19,7 @@ public enum DBError {
     case nickNameRepeat
     case phoneNumRepeat
     case userDoNotExist
+    case userIsNotLegal
     case wrongPassword
     case unkown
 }
@@ -30,8 +31,8 @@ public enum Result<ErrorType> {
 
 public typealias Handler<ErrorType> = (Result<ErrorType>) -> ()
 
-class DataBaseManager {
-    public static let shared = DataBaseManager()
+class DatabaseManager {
+    public static let shared = DatabaseManager()
     
     private let dataBase = Database(withPath: kDataBasePath)
     private init() {}
@@ -41,7 +42,7 @@ class DataBaseManager {
     }
 }
 
-extension DataBaseManager {
+extension DatabaseManager {
 
     public func creatUser(identifier: Int,
                           userName: String,
@@ -75,12 +76,12 @@ extension DataBaseManager {
     }
     
     public func creatClass(name: String, lesson: String, students: [Student]?, attendanceSheets: [AttendanceRecord]?, compeletionHandler: Handler<Swift.Error>?) {
-        let aClass = Class(name: name, lesson: lesson, students: students, attendanceSheets: attendanceSheets)
-        insert(objects: [aClass], intoTable: kClassTabelName, handler: compeletionHandler)
+//        let aClass = Class(name: name, lesson: lesson, students: students, attendanceSheets: attendanceSheets)
+//        insert(objects: [aClass], intoTable: kClassTabelName, handler: compeletionHandler)
     }
 }
 
-extension DataBaseManager {
+extension DatabaseManager {
     public func getUser(identifier: Int) -> User? {
         do {
             let user: User? = try dataBase.getObject(fromTable: kUserTableName, where: User.Properties.identifier == identifier)
@@ -109,7 +110,7 @@ extension DataBaseManager {
     }
 }
 
-extension DataBaseManager {
+extension DatabaseManager {
 
     private func creatTables() {
         do {

@@ -112,6 +112,8 @@ extension LoginViewController {
                     switch error {
                     case .userDoNotExist:
                         keyWindow?.makeToast("用户不存在！")
+                    case .userIsNotLegal:
+                        keyWindow?.makeToast("用户名不合法！")
                     case .wrongPassword:
                         keyWindow?.makeToast("密码错误！")
                     default:

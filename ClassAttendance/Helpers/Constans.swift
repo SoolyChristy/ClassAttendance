@@ -7,5 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
 let bigTitleMargin = scale(iPhone8Design: 16)
+let maxNavMargin: CGFloat = 116
+let kScreenWidth = UIScreen.main.bounds.width
+let kScreenHeight = UIScreen.main.bounds.height
