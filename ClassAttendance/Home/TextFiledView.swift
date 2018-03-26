@@ -72,6 +72,7 @@ final class TextFiledView: UIView {
 
 extension TextFiledView {
     private func setupUI() {
+        textFiled.delegate = self
         textFiled.returnKeyType = .done
         textFiled.textAlignment = .center
         textFiled.font = UIFont.systemFont(ofSize: scale(iPhone8Design: 16))
@@ -82,5 +83,12 @@ extension TextFiledView {
     @objc private func textFiledStatusChanged() {
         placehoderLabel.isHidden = (textFiled.text ?? "").isEmpty ? false : true
         statusDidChanged?(textFiled.text ?? "")
+    }
+}
+
+extension TextFiledView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

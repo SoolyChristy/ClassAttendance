@@ -17,8 +17,6 @@ class SignUpViewController: BaseViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
-        let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapAciton))
-        view.addGestureRecognizer(tap)
         let bigTitle = UILabel(bigTitle: "注册")
         view.addSubview(bigTitle)
         bigTitle.snp.makeConstraints { (make) in
@@ -60,7 +58,7 @@ class SignUpViewController: BaseViewController {
         let signUpBtn = UIButton.customButton(title: "注册")
         view.addSubview(signUpBtn)
         signUpBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(passwordFiled.snp.bottom).offset(scale(iPhone8Design: 24))
+            make.top.equalTo(passwordFiled.snp.bottom).offset(scale(iPhone8Design: 56))
             make.centerX.equalTo(view)
         }
         signUpBtn.addTarget(self, action: #selector(signUpBtnAction), for: .touchUpInside)
@@ -126,9 +124,5 @@ extension SignUpViewController {
     
     @objc private func tipBtnAction() {
         navigationController?.popViewController(animated: true)
-    }
-    
-    @objc private func viewTapAciton() {
-        view.endEditing(true)
     }
 }

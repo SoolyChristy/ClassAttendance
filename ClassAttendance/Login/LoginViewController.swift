@@ -23,8 +23,6 @@ class LoginViewController: BaseViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
-        let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapAciton))
-        view.addGestureRecognizer(tap)
 
         let bigTitle = UILabel(bigTitle: "欢迎使用，请登录")
         view.addSubview(bigTitle)
@@ -57,7 +55,7 @@ class LoginViewController: BaseViewController {
         loginBtn.addTarget(self, action: #selector(loginBtnAction), for: .touchUpInside)
         view.addSubview(loginBtn)
         loginBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(passwordFiled.snp.bottom).offset(scale(iPhone8Design: 24))
+            make.top.equalTo(passwordFiled.snp.bottom).offset(scale(iPhone8Design: 56))
             make.centerX.equalTo(view)
         }
         
@@ -126,9 +124,5 @@ extension LoginViewController {
     
     @objc private func registerBtnAction() {
         navigationController?.pushViewController(SignUpViewController(), animated: true)
-    }
-    
-    @objc private func viewTapAciton() {
-        view.endEditing(true)
     }
 }

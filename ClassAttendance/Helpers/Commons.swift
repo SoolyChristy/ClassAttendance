@@ -47,4 +47,11 @@ public func colorToImage(color: UIColor) -> UIImage {
     return image ?? UIImage()
 }
 
+public func isX() -> Bool {
+    if UIScreen.main.bounds.height == 812 {
+        return true
+    }
+    return false
+}
+
 private let kScale = UIScreen.main.bounds.width / 375.0

@@ -67,6 +67,7 @@
 		70863E322068C5CD0019CF27 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DFD2068C5CD0019CF27 /* Label.swift */; };
 		70863E332068C5CD0019CF27 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DFE2068C5CD0019CF27 /* SegmentedControl.swift */; };
 		70863E342068C5CD0019CF27 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DFF2068C5CD0019CF27 /* TextField.swift */; };
+		70C10FC82070F2FD00E0F289 /* AddStudentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C10FC72070F2FD00E0F289 /* AddStudentController.swift */; };
 		70CEADD02059593200CD2900 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEADCF2059593200CD2900 /* SignUpViewController.swift */; };
 		70D7858E2057EE98002483F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D7858D2057EE98002483F1 /* AppDelegate.swift */; };
 		70D785932057EE98002483F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70D785912057EE98002483F1 /* Main.storyboard */; };
@@ -85,6 +86,8 @@
 		70D8F29920593E020059A24E /* UICommons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8F29820593E020059A24E /* UICommons.swift */; };
 		70D8F2A6205947870059A24E /* InputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8F2A4205947870059A24E /* InputView.xib */; };
 		70D8F2A7205947870059A24E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8F2A5205947870059A24E /* InputView.swift */; };
+		70F5B644206A671700EEADE6 /* ClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F5B643206A671700EEADE6 /* ClassViewController.swift */; };
+		70F5B654206A6CFB00EEADE6 /* ClassStudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F5B653206A6CFB00EEADE6 /* ClassStudentCell.swift */; };
 		B1595D7C11BA5C414F660C33 /* Pods_ClassAttendance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B26E9C93A54A825C69A4834 /* Pods_ClassAttendance.framework */; };
 		FE3DD4A8C81E7C185866E0D7 /* Pods_ClassAttendanceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95079032CCDD42A25C9D97CC /* Pods_ClassAttendanceUITests.framework */; };
 /* End PBXBuildFile section */
@@ -168,6 +171,7 @@
 		70863DFD2068C5CD0019CF27 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		70863DFE2068C5CD0019CF27 /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		70863DFF2068C5CD0019CF27 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		70C10FC72070F2FD00E0F289 /* AddStudentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudentController.swift; sourceTree = "<group>"; };
 		70CEADCF2059593200CD2900 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		70D7858A2057EE98002483F1 /* ClassAttendance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassAttendance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70D7858D2057EE98002483F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 		70D8F29820593E020059A24E /* UICommons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICommons.swift; sourceTree = "<group>"; };
 		70D8F2A4205947870059A24E /* InputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputView.xib; sourceTree = "<group>"; };
 		70D8F2A5205947870059A24E /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		70F5B643206A671700EEADE6 /* ClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassViewController.swift; sourceTree = "<group>"; };
+		70F5B653206A6CFB00EEADE6 /* ClassStudentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassStudentCell.swift; sourceTree = "<group>"; };
 		7BD64143A9737162388AFD7F /* Pods-ClassAttendanceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClassAttendanceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClassAttendanceTests/Pods-ClassAttendanceTests.release.xcconfig"; sourceTree = "<group>"; };
 		8AD6FBD6A2B09B440665B694 /* Pods-ClassAttendance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClassAttendance.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClassAttendance/Pods-ClassAttendance.release.xcconfig"; sourceTree = "<group>"; };
 		8B26E9C93A54A825C69A4834 /* Pods_ClassAttendance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClassAttendance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -617,9 +623,8 @@
 		70D785BC2057EF7F002483F1 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				70F5B645206A695200EEADE6 /* Class */,
 				70D785C42057EFDF002483F1 /* HomeViewController.swift */,
-				700A62EE205E8C1200AFDD18 /* CreatClassController.swift */,
-				70863DAC2068C1200019CF27 /* ClassTimeManager.swift */,
 				7053F1E120613E1300CDB402 /* TextFiledView.xib */,
 				7053F1E320613EA400CDB402 /* TextFiledView.swift */,
 			);
@@ -653,6 +658,26 @@
 				70D8F29620593C3E0059A24E /* Constans.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		70F5B645206A695200EEADE6 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				70F5B646206A696100EEADE6 /* ViewModel */,
+				700A62EE205E8C1200AFDD18 /* CreatClassController.swift */,
+				70F5B643206A671700EEADE6 /* ClassViewController.swift */,
+				70F5B653206A6CFB00EEADE6 /* ClassStudentCell.swift */,
+				70C10FC72070F2FD00E0F289 /* AddStudentController.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		70F5B646206A696100EEADE6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				70863DAC2068C1200019CF27 /* ClassTimeManager.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -972,10 +997,12 @@
 				70863E022068C5CD0019CF27 /* Date+Extension.swift in Sources */,
 				70D8F29720593C3E0059A24E /* Constans.swift in Sources */,
 				70863E242068C5CD0019CF27 /* Location.swift in Sources */,
+				70C10FC82070F2FD00E0F289 /* AddStudentController.swift in Sources */,
 				70863E2D2068C5CD0019CF27 /* TwoTextFieldsViewController.swift in Sources */,
 				70863E202068C5CD0019CF27 /* LocationPickerViewController.swift in Sources */,
 				70863E112068C5CD0019CF27 /* ColorPickerViewController.swift in Sources */,
 				70D785C32057EFB0002483F1 /* NavViewController.swift in Sources */,
+				70F5B644206A671700EEADE6 /* ClassViewController.swift in Sources */,
 				70863E2B2068C5CD0019CF27 /* LikeButtonCell.swift in Sources */,
 				7011F3DA205A8B20007B9AD4 /* DatabaseManager.swift in Sources */,
 				70863E2F2068C5CD0019CF27 /* TextViewController.swift in Sources */,
@@ -1011,6 +1038,7 @@
 				70863E302068C5CD0019CF27 /* Button.swift in Sources */,
 				70D8F2A7205947870059A24E /* InputView.swift in Sources */,
 				70863E222068C5CD0019CF27 /* SearchHistoryManager.swift in Sources */,
+				70F5B654206A6CFB00EEADE6 /* ClassStudentCell.swift in Sources */,
 				70863E0B2068C5CD0019CF27 /* UISearchBar+Extensions.swift in Sources */,
 				70863DAD2068C1200019CF27 /* ClassTimeManager.swift in Sources */,
 				70863E0A2068C5CD0019CF27 /* UIImageView+Extensions.swift in Sources */,

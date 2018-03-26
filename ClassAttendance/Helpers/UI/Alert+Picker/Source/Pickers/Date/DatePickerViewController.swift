@@ -34,6 +34,7 @@ final class DatePickerViewController: UIViewController {
         datePicker.date = date ?? Date()
         datePicker.minimumDate = minimumDate
         datePicker.maximumDate = maximumDate
+        action?(datePicker.date)
         self.action = action
     }
     

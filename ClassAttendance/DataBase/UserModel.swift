@@ -80,10 +80,10 @@ struct Class: TableCodable {
 
 /// 学生
 struct Student: TableCodable {
-    var name: String?
-    var id: Int?
-    var phone: Int?
-    var icon: String?
+    var name: String
+    var id: Int
+    var phone: Int
+    var icon: String
     var late: [AttendanceDetail]?
     var absenteeism: [AttendanceDetail]?
     var earlyLeave: [AttendanceDetail]?

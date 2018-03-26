@@ -37,8 +37,17 @@ class NavViewController: UINavigationController {
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         super.pushViewController(viewController, animated: animated)
         
-        if viewControllers.count >= 2 {
+        if viewControllers.count > 1 {
+            let backBtn = UIButton()
+            backBtn.setImage(#imageLiteral(resourceName: "ic_back"), for: .normal)
+            backBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            backBtn.addTarget(self, action: #selector(backItemAction), for: .touchUpInside)
+            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
             tabBarController?.tabBar.isHidden = true
         }
+    }
+    
+    @objc private func backItemAction() {
+        _ = popViewController(animated: true)
     }
 }
