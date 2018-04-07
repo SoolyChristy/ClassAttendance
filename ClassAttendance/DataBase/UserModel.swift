@@ -13,10 +13,10 @@ public typealias ClassDate = [Int: Date]
 
 /// 用户
 struct User: TableCodable {
-    var identifier: Int?
-    var password: String?
-    var userName: String?
-    var phoneNum: Int?
+    var identifier: Int
+    var password: String
+    var userName: String
+    var phoneNum: Int
     var classes: [Class]?
 
     enum CodingKeys: String, CodingTableKey {
@@ -57,23 +57,27 @@ struct Lesson: TableCodable {
 
 /// 班级
 struct Class: TableCodable {
-    var name: String?
-    var lesson: String?
-    var date: ClassDate?
-    var students: [Student]?
+    var id: String
+    var name: String
+    var lesson: String
+    var icon: String
+    var dates: [ClassDate]
+    var students: [Student]
     var attendanceSheets: [AttendanceRecord]?
     
     enum CodingKeys: String, CodingTableKey {
         typealias Root = Class
         static let objectRelationalMapping = TableBinding(CodingKeys.self)
+        case id
         case name
-        case date
+        case dates
+        case icon
         case students
         case lesson
         case attendanceSheets
         
         static var columnConstraintBindings: [CodingKeys: ColumnConstraintBinding]? {
-            return [name: ColumnConstraintBinding(isPrimary: true)]
+            return [id: ColumnConstraintBinding(isPrimary: true)]
         }
     }
 }
@@ -84,6 +88,7 @@ struct Student: TableCodable {
     var id: Int
     var phone: Int
     var icon: String
+    var sex: Sex
     var late: [AttendanceDetail]?
     var absenteeism: [AttendanceDetail]?
     var earlyLeave: [AttendanceDetail]?
@@ -100,6 +105,7 @@ struct Student: TableCodable {
         case absenteeism
         case earlyLeave
         case leave
+        case sex
     }
 }
 
@@ -133,6 +139,11 @@ struct AttendanceRecord: TableCodable {
         case leave
         case earlyLeave
     }
+}
+
+public enum Sex: String, Codable {
+    case male = "男"
+    case female = "女"
 }
 
 //struct RecordDetail: TableCodable {

@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.7.1)
   - SnapKit (4.0.0)
   - Toast-Swift (3.0.1)
   - WCDB.swift (1.0.6):
@@ -6,15 +7,17 @@ PODS:
   - WCDB.swift/sqlcipher (1.0.6)
 
 DEPENDENCIES:
+  - Alamofire
   - SnapKit
   - Toast-Swift (~> 3.0.1)
   - WCDB.swift
 
 SPEC CHECKSUMS:
+  Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
   WCDB.swift: 5bb038bc5bb46067cccc7c48392e8f4c4a15def0
 
-PODFILE CHECKSUM: 063c7e05e3e263dc3911b32cfb4cffadf36648d3
+PODFILE CHECKSUM: d688375bfb1bd025d05202a690a014b63acea519
 
 COCOAPODS: 1.4.0

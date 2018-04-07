@@ -20,14 +20,13 @@ class ClassStudentCell: UITableViewCell {
     }
     
     public func update(model: Student) {
-        iconView.image = UIImage(named: model.name)
+        iconView.image = UIImage(named: model.icon)
         nameLabel.text = model.name
         numberLabel.text = "\(model.id)"
     }
     
     private func setupUI() {
         contentView.addSubview(iconView)
-        iconView.backgroundColor = .yellow
         iconView.snp.makeConstraints { (make) in
             make.left.equalTo(contentView).offset(scale(iPhone8Design: 16))
             make.centerY.equalTo(contentView)

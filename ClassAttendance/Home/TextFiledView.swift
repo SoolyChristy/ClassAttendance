@@ -48,12 +48,12 @@ final class TextFiledView: UIView {
         return view
     }
     
-    public func setStatusDidChanged<T: AnyObject>(_ target: T, handler: ((T, _ text: String) -> ())?) {
-        statusDidChanged = { [weak target] text in
+    public func setStatusDidChanged<T: AnyObject>(_ target: T, handler: @escaping (T, _ text: String) -> ()) {
+        statusDidChangedHandler = { [weak target] text in
             guard let target = target else {
                 return
             }
-            handler?(target, text)
+            handler(target, text)
         }
     }
     
@@ -67,7 +67,7 @@ final class TextFiledView: UIView {
     
     @IBOutlet private weak var textFiled: UITextField!
     @IBOutlet private weak var seperator: UIView!
-    private var statusDidChanged: ((_ text: String) -> ())?
+    private var statusDidChangedHandler: (_ text: String) -> () = {_ in }
 }
 
 extension TextFiledView {
@@ -81,8 +81,9 @@ extension TextFiledView {
     }
     
     @objc private func textFiledStatusChanged() {
-        placehoderLabel.isHidden = (textFiled.text ?? "").isEmpty ? false : true
-        statusDidChanged?(textFiled.text ?? "")
+        let text = textFiled.text ?? ""
+        placehoderLabel.isHidden = text.isEmpty ? false : true
+        statusDidChangedHandler(text)
     }
 }
 

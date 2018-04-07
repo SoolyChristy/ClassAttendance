@@ -16,12 +16,19 @@ private let kClassTabelName = "Class"
 private let kAttendanceRecordName = "AttendanceRecord"
 
 public enum DBError {
-    case nickNameRepeat
-    case phoneNumRepeat
-    case userDoNotExist
-    case userIsNotLegal
-    case wrongPassword
-    case unkown
+    public enum AccountError {
+        case nickNameRepeat
+        case phoneNumRepeat
+        case userDoNotExist
+        case userIsNotLegal
+        case wrongPassword
+        case unknown
+    }
+    
+    public enum ClassError {
+        case idRepeat
+        case unknown
+    }
 }
 
 public enum Result<ErrorType> {
@@ -48,16 +55,16 @@ extension DatabaseManager {
                           userName: String,
                           phoneNum: Int,
                           password: String,
-                          compeletionHandler: Handler<DBError>?) {
+                          compeletionHandler: @escaping Handler<DBError.AccountError>) {
         let user = User(identifier: identifier, password: password, userName: userName, phoneNum: phoneNum, classes: [Class]())
         insert(objects: [user], intoTable: kUserTableName) { (result) in
             switch result {
             case .success:
                 printLog("创建用户成功 - \(user)")
-                compeletionHandler?(.success)
+                compeletionHandler(.success)
             case .failure(let error):
                 printLog("创建用户失败 - \(error)")
-                var dbError: DBError = .unkown
+                var dbError: DBError.AccountError = .unknown
                 if let errorMsg = (error as? WCDBSwift.Error)?.message{
                     if errorMsg.contains("User.userName") {
                         dbError = .nickNameRepeat
@@ -65,7 +72,7 @@ extension DatabaseManager {
                         dbError = .phoneNumRepeat
                     }
                 }
-                compeletionHandler?(.failure(dbError))
+                compeletionHandler(.failure(dbError))
             }
         }
     }
@@ -75,9 +82,23 @@ extension DatabaseManager {
         insert(objects: [lesson], intoTable: kLessonTableName, handler: compeletionHandler)
     }
     
-    public func creatClass(name: String, lesson: String, students: [Student]?, attendanceSheets: [AttendanceRecord]?, compeletionHandler: Handler<Swift.Error>?) {
-//        let aClass = Class(name: name, lesson: lesson, students: students, attendanceSheets: attendanceSheets)
-//        insert(objects: [aClass], intoTable: kClassTabelName, handler: compeletionHandler)
+    public func creatClass(aClass: Class, compeletionHandler: @escaping Handler<DBError.ClassError>) {
+        insert(objects: [aClass], intoTable: kClassTabelName) { (result) in
+            switch result {
+            case .success:
+                printLog("创建课堂成功 - \(aClass)")
+                compeletionHandler(.success)
+            case .failure(let error):
+                printLog("创建课堂失败 - \(error.localizedDescription)")
+                var dbError: DBError.ClassError = .unknown
+                if let errorMsg = (error as? WCDBSwift.Error)?.message{
+                    if errorMsg.contains("Class.id") {
+                        dbError = .idRepeat
+                    }
+                }
+                compeletionHandler(.failure(dbError))
+            }
+        }
     }
 }
 
@@ -92,14 +113,14 @@ extension DatabaseManager {
         }
     }
     
-    public func checkUser(identifier: Int, password: String, handler: Handler<DBError>) {
+    public func checkUser(identifier: Int, password: String, handler: Handler<DBError.AccountError>) {
         do {
             guard let user: User = try dataBase.getObject(fromTable: kUserTableName,
                                                        where: (User.Properties.identifier == identifier) && (User.Properties.phoneNum == identifier)) else {
                                                         handler(.failure(.userDoNotExist))
                                                         return
             }
-            if user.password ?? "" == password {
+            if user.password == password {
                 handler(.success)
             } else {
                 handler(.failure(.wrongPassword))

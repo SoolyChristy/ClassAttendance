@@ -10,6 +10,8 @@ import UIKit
 
 //let mainColor = rgbColor(0xff3498db)
 let mainColor = rgbColor(0xffffaf00)
+let maleColor = rgbColor(0xff1296db)
+let femaleColor = rgbColor(0xffd4237a)
 
 extension UILabel {
 
@@ -39,5 +41,14 @@ extension UIButton {
         btn.layer.cornerRadius = size.height / 2
         btn.layer.masksToBounds = true
         return btn
+    }
+    
+    public class func iconButton(size: CGSize = CGSize(width: scale(iPhone8Design: 71),
+                                                       height: scale(iPhone8Design: 71))) -> UIButton {
+        let iconBtn = UIButton()
+        iconBtn.setImage(#imageLiteral(resourceName: "ic_add_class"), for: .normal)
+        iconBtn.widthAnchor.constraint(equalToConstant: scale(iPhone8Design: size.width)).isActive = true
+        iconBtn.heightAnchor.constraint(equalToConstant: scale(iPhone8Design: size.height)).isActive = true
+        return iconBtn
     }
 }

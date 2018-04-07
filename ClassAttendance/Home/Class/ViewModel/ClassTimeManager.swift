@@ -9,13 +9,18 @@
 import Foundation
 import UIKit
 
-final class classTimeManager: NSObject {
+final class ClassTimeManager {
+    
+    struct ClassTime {
+        var week: String
+        var date: String
+    }
     
     typealias Compeletion = (_ date: ClassDate) -> ()
     private let weeks = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
     
     /// return (week, date)
-    public func classDateToString(classDate: ClassDate) -> (String, String) {
+    public func classDateToString(classDate: ClassDate) -> ClassTime {
         var weekString = ""
         var dateString = ""
         for (week, date) in classDate {
@@ -24,7 +29,20 @@ final class classTimeManager: NSObject {
             }
             dateString = dateFormate.string(from: date)
         }
-        return (weekString, dateString)
+        return ClassTime(week: weekString, date: dateString)
+    }
+    
+    public func classDatesToString(classDates: [ClassDate]) -> String {
+        var str = ""
+        for classDate in classDates {
+            let classTime = classDateToString(classDate: classDate)
+            str += "\(classTime.week) \(classTime.date)/"
+        }
+        guard !str.isEmpty else {
+            return str
+        }
+        str.removeLast()
+        return str
     }
     
     public func showClassTimePicker(defaultClassDate: ClassDate? = nil, compeletion: @escaping Compeletion) {
@@ -97,7 +115,7 @@ final class classTimeManager: NSObject {
     private var handler: Compeletion = {_ in }
 }
 
-extension classTimeManager {
+extension ClassTimeManager {
     private func classDate() -> ClassDate {
         
         if let classDate = defaultClassDate,

@@ -9,7 +9,7 @@
 import UIKit
 
 class BaseViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -24,23 +24,6 @@ class BaseViewController: UIViewController {
 
 extension BaseViewController {
     private func setupUI() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapAciton))
-        view.addGestureRecognizer(tap)
         view.backgroundColor = .white
-//        if navigationController?.viewControllers.count ?? 0 > 1 {
-//            let backBtn = UIButton()
-//            backBtn.setImage(#imageLiteral(resourceName: "ic_back"), for: .normal)
-//            backBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-//            backBtn.addTarget(self, action: #selector(backItemAction), for: .touchUpInside)
-//            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
-//        }
-    }
-    
-//    @objc private func backItemAction() {
-//        navigationController?.popViewController(animated: true)
-//    }
-    
-    @objc private func viewTapAciton() {
-        view.endEditing(true)
     }
 }

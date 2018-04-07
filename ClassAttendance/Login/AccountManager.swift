@@ -29,7 +29,7 @@ class AccountManager {
         }
     }
     
-    public func register(userName: String, phoneNum: Int, password: String, compeletionHandler: Handler<DBError>?) {
+    public func register(userName: String, phoneNum: Int, password: String, compeletionHandler: @escaping Handler<DBError.AccountError>) {
         DatabaseManager.shared.creatUser(identifier: phoneNum,
                                          userName: userName,
                                          phoneNum: phoneNum,
@@ -37,7 +37,7 @@ class AccountManager {
                                          compeletionHandler: compeletionHandler)
     }
     
-    public func login(userName: String, password: String, compeletionHandler: Handler<DBError>) {
+    public func login(userName: String, password: String, compeletionHandler: Handler<DBError.AccountError>) {
         if let phoneNum = Int(userName) {
             DatabaseManager.shared.checkUser(identifier: phoneNum, password: password, handler: { (result) in
                 switch result {

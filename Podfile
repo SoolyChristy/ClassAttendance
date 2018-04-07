@@ -8,6 +8,7 @@ target 'ClassAttendance' do
   # Pods for ClassAttendance
 
   pod 'SnapKit'
+  pod 'Alamofire'
   pod 'WCDB.swift'
   pod 'Toast-Swift', '~> 3.0.1'
 

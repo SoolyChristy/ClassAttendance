@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "63E27556E930CF3D6961D2DFEFCB9A59"
+               BlueprintIdentifier = "F4E4145C990949413B21A5277E407DA7"
                BuildableName = "Pods_ClassAttendance.framework"
                BlueprintName = "Pods-ClassAttendance"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,7 +26,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -37,7 +36,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -47,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "63E27556E930CF3D6961D2DFEFCB9A59"
+            BlueprintIdentifier = "F4E4145C990949413B21A5277E407DA7"
             BuildableName = "Pods_ClassAttendance.framework"
             BlueprintName = "Pods-ClassAttendance"
             ReferencedContainer = "container:Pods.xcodeproj">

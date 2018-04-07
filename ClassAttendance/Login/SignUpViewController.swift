@@ -17,11 +17,14 @@ class SignUpViewController: BaseViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
+        let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapAciton))
+        view.addGestureRecognizer(tap)
+        view.backgroundColor = .white
         let bigTitle = UILabel(bigTitle: "注册")
         view.addSubview(bigTitle)
         bigTitle.snp.makeConstraints { (make) in
             make.top.equalTo(scale(iPhone8Design: 76))
-            make.left.equalTo(bigTitleMargin)
+            make.left.equalTo(kBigTitleMargin)
         }
         
         nameFiled.textField.delegate = self
@@ -95,6 +98,11 @@ extension SignUpViewController: UITextFieldDelegate {
 }
 
 extension SignUpViewController {
+    
+    @objc private func viewTapAciton() {
+        view.endEditing(true)
+    }
+    
     @objc private func signUpBtnAction() {
         if let name = nameFiled.textField.text,
             let phoneStr = phoneFiled.textField.text,

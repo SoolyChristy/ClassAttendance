@@ -21,14 +21,12 @@ class CreatClassController: BaseViewController {
     private func setupUI() {
         title = "新建课堂"
 
-        let iconBtn = UIButton()
+        let iconBtn = UIButton.iconButton()
         iconBtn.addTarget(self, action: #selector(iconBtnAction), for: .touchUpInside)
-        iconBtn.setImage(#imageLiteral(resourceName: "ic_add_class"), for: .normal)
         view.addSubview(iconBtn)
         iconBtn.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(scale(iPhone8Design: 20))
             make.centerX.equalTo(view)
-            make.width.height.equalTo(scale(iPhone8Design: 71))
         }
         
         nameFiled.placehoderLabel.text = "班级名称"
@@ -37,7 +35,7 @@ class CreatClassController: BaseViewController {
         }
         view.addSubview(nameFiled)
         nameFiled.snp.makeConstraints { (make) in
-            make.top.equalTo(iconBtn.snp.bottom).offset(scale(iPhone8Design: 28))
+            make.top.equalTo(iconBtn.snp.bottom).offset(kTextFieldMargin)
             make.centerX.equalTo(view)
             make.width.equalTo(scale(iPhone8Design: 180))
             make.height.equalTo(scale(iPhone8Design: 17))
@@ -49,7 +47,7 @@ class CreatClassController: BaseViewController {
         }
         view.addSubview(lessonFiled)
         lessonFiled.snp.makeConstraints { (make) in
-            make.top.equalTo(nameFiled.snp.bottom).offset(scale(iPhone8Design: 28))
+            make.top.equalTo(nameFiled.snp.bottom).offset(kTextFieldMargin)
             make.centerX.equalTo(view)
             make.width.equalTo(nameFiled)
             make.height.equalTo(nameFiled)
@@ -63,7 +61,7 @@ class CreatClassController: BaseViewController {
         tableView.rowHeight = scale(iPhone8Design: kRowHeight)
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(lessonFiled.snp.bottom).offset(scale(iPhone8Design: 28))
+            make.top.equalTo(lessonFiled.snp.bottom).offset(kTextFieldMargin)
             make.left.right.equalTo(view)
             make.height.equalTo(scale(iPhone8Design: 220))
         }
@@ -73,22 +71,32 @@ class CreatClassController: BaseViewController {
         nextBtn.addTarget(self, action: #selector(nextBtnAction), for: .touchUpInside)
         view.addSubview(nextBtn)
         nextBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(tableView.snp.bottom).offset(scale(iPhone8Design: 48))
+            make.top.equalTo(tableView.snp.bottom).offset(kCustomButtonMargin)
             make.centerX.equalTo(view)
         }
     }
     
     fileprivate let nameFiled = TextFiledView.textFiledView()
     fileprivate let lessonFiled = TextFiledView.textFiledView()
-    fileprivate let nextBtn = UIButton.customButton(title: "完成")
+    fileprivate let nextBtn = UIButton.customButton(title: "下一步")
     private let tableView = UITableView()
     private var dates = [ClassDate]()
-    private let classTimeMgr = classTimeManager()
+    private let classTimeMgr = ClassTimeManager()
 }
 
 extension CreatClassController {
     @objc private func nextBtnAction() {
-        navigationController?.pushViewController(ClassViewController(), animated: true)
+        guard dates.count > 0 else {
+            view.makeToast("请选择课堂时间")
+            return
+        }
+        guard let name = nameFiled.text,
+            let lesson = lessonFiled.text else {
+                return
+        }
+        
+        let `class` = Class(id: "\(name)\(lesson)", name: name, lesson: lesson, icon: "ic_defalut_class", dates: dates, students: [Student](), attendanceSheets: nil)
+        navigationController?.pushViewController(ClassViewController(class: `class`), animated: true)
     }
     
     @objc private func iconBtnAction() {
@@ -120,9 +128,9 @@ extension CreatClassController: UITableViewDataSource, UITableViewDelegate {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: kReuseId)
         cell.accessoryType = .disclosureIndicator
         let classDate = dates[indexPath.row]
-        let (week, date) = classTimeMgr.classDateToString(classDate: classDate)
-        cell.textLabel?.text = week
-        cell.detailTextLabel?.text = date
+        let classTime = classTimeMgr.classDateToString(classDate: classDate)
+        cell.textLabel?.text = classTime.week
+        cell.detailTextLabel?.text = classTime.date
         return cell
     }
     
@@ -164,12 +172,12 @@ extension CreatClassController: UITableViewDataSource, UITableViewDelegate {
         addBtn.addTarget(self, action: #selector(addBtnAction), for: .touchUpInside)
         view.addSubview(addBtn)
         addBtn.snp.makeConstraints { (make) in
-            make.right.equalTo(view.snp.right).offset(-bigTitleMargin)
+            make.right.equalTo(view.snp.right).offset(-kBigTitleMargin)
             make.centerY.equalTo(view)
         }
         view.addSubview(title)
         title.snp.makeConstraints { (make) in
-            make.left.equalTo(view).offset(bigTitleMargin)
+            make.left.equalTo(view).offset(kBigTitleMargin)
             make.centerY.equalTo(view)
         }
         

@@ -13,6 +13,7 @@
 		7011F3DA205A8B20007B9AD4 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7011F3D9205A8B20007B9AD4 /* DatabaseManager.swift */; };
 		7053F1E220613E1300CDB402 /* TextFiledView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7053F1E120613E1300CDB402 /* TextFiledView.xib */; };
 		7053F1E420613EA400CDB402 /* TextFiledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7053F1E320613EA400CDB402 /* TextFiledView.swift */; };
+		708043112078A68C005F7675 /* ClassManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708043102078A68C005F7675 /* ClassManager.swift */; };
 		70863DAD2068C1200019CF27 /* ClassTimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DAC2068C1200019CF27 /* ClassTimeManager.swift */; };
 		70863E002068C5CD0019CF27 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DB12068C5CD0019CF27 /* Array+Extensions.swift */; };
 		70863E012068C5CD0019CF27 /* Common+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DB22068C5CD0019CF27 /* Common+Extensions.swift */; };
@@ -117,6 +118,7 @@
 		7011F3D9205A8B20007B9AD4 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		7053F1E120613E1300CDB402 /* TextFiledView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFiledView.xib; sourceTree = "<group>"; };
 		7053F1E320613EA400CDB402 /* TextFiledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFiledView.swift; sourceTree = "<group>"; };
+		708043102078A68C005F7675 /* ClassManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassManager.swift; sourceTree = "<group>"; };
 		70863DAC2068C1200019CF27 /* ClassTimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTimeManager.swift; sourceTree = "<group>"; };
 		70863DB12068C5CD0019CF27 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		70863DB22068C5CD0019CF27 /* Common+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Common+Extensions.swift"; sourceTree = "<group>"; };
@@ -675,6 +677,7 @@
 		70F5B646206A696100EEADE6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				708043102078A68C005F7675 /* ClassManager.swift */,
 				70863DAC2068C1200019CF27 /* ClassTimeManager.swift */,
 			);
 			path = ViewModel;
@@ -829,12 +832,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ClassAttendance/Pods-ClassAttendance-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/WCDB.swift/WCDBSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WCDBSwift.framework",
@@ -1042,6 +1047,7 @@
 				70863E0B2068C5CD0019CF27 /* UISearchBar+Extensions.swift in Sources */,
 				70863DAD2068C1200019CF27 /* ClassTimeManager.swift in Sources */,
 				70863E0A2068C5CD0019CF27 /* UIImageView+Extensions.swift in Sources */,
+				708043112078A68C005F7675 /* ClassManager.swift in Sources */,
 				70863E052068C5CD0019CF27 /* String+Extensions.swift in Sources */,
 				70863E042068C5CD0019CF27 /* Optional+Extensions.swift in Sources */,
 				70863E092068C5CD0019CF27 /* UIImage+Extensions.swift in Sources */,

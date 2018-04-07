@@ -23,12 +23,15 @@ class LoginViewController: BaseViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
+        let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapAciton))
+        view.addGestureRecognizer(tap)
+        view.backgroundColor = .white
 
         let bigTitle = UILabel(bigTitle: "欢迎使用，请登录")
         view.addSubview(bigTitle)
         bigTitle.snp.makeConstraints { (make) in
             make.top.equalTo(scale(iPhone8Design: 76))
-            make.left.equalTo(bigTitleMargin)
+            make.left.equalTo(kBigTitleMargin)
         }
         
         nameFiled.textField.delegate = self
@@ -97,6 +100,11 @@ extension LoginViewController: UITextFieldDelegate {
 }
 
 extension LoginViewController {
+
+    @objc private func viewTapAciton() {
+        view.endEditing(true)
+    }
+    
     @objc private func loginBtnAction() {
         if let nickName = nameFiled.textField.text,
             let psw = passwordFiled.textField.text {
