@@ -13,6 +13,23 @@ let mainColor = rgbColor(0xffffaf00)
 let maleColor = rgbColor(0xff1296db)
 let femaleColor = rgbColor(0xffd4237a)
 
+extension UIImageView {
+    public class func visualImageView(frame: CGRect, imageName: String?, blurEffectStyle: UIBlurEffectStyle = .light) -> UIImageView {
+        let visualImageView = UIImageView()
+        if let imageName = imageName {
+            visualImageView.image = UIImage(named: imageName)
+        }
+        visualImageView.frame = frame
+        let blurEffect = UIBlurEffect(style: blurEffectStyle)
+        let visualView = UIVisualEffectView(effect: blurEffect)
+        visualImageView.addSubview(visualView)
+        visualView.snp.makeConstraints { (make) in
+            make.edges.equalTo(visualImageView)
+        }
+        return visualImageView
+    }
+}
+
 extension UILabel {
 
     convenience init(bigTitle: String) {

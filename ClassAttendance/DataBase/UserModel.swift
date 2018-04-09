@@ -17,7 +17,7 @@ struct User: TableCodable {
     var password: String
     var userName: String
     var phoneNum: Int
-    var classes: [Class]?
+    var classes: [Class]
 
     enum CodingKeys: String, CodingTableKey {
         typealias Root = User
@@ -58,6 +58,7 @@ struct Lesson: TableCodable {
 /// 班级
 struct Class: TableCodable {
     var id: String
+    var userId: Int
     var name: String
     var lesson: String
     var icon: String
@@ -65,10 +66,22 @@ struct Class: TableCodable {
     var students: [Student]
     var attendanceSheets: [AttendanceRecord]?
     
+    init(name: String, lesson: String, icon: String, dates: [ClassDate], students: [Student]) {
+        self.id = name + lesson
+        self.userId = AccountManager.shared.currentUser?.identifier ?? 0
+        self.name = name
+        self.lesson = lesson
+        self.icon = icon
+        self.dates = dates
+        self.students = students
+        self.attendanceSheets = [AttendanceRecord]()
+    }
+    
     enum CodingKeys: String, CodingTableKey {
         typealias Root = Class
         static let objectRelationalMapping = TableBinding(CodingKeys.self)
         case id
+        case userId
         case name
         case dates
         case icon

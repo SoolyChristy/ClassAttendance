@@ -95,7 +95,7 @@ extension CreatClassController {
                 return
         }
         
-        let `class` = Class(id: "\(name)\(lesson)", name: name, lesson: lesson, icon: "ic_defalut_class", dates: dates, students: [Student](), attendanceSheets: nil)
+        let `class` = Class(name: name, lesson: lesson, icon: "ic_defalut_class", dates: dates, students: [Student]())
         navigationController?.pushViewController(ClassViewController(class: `class`), animated: true)
     }
     

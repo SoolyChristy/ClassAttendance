@@ -53,6 +53,10 @@ class AccountManager {
         }
     }
 
+    public func update(_ user: User, compeletionHandler: @escaping Handler<DBError>) {
+        DatabaseManager.shared.update(user: user, compeletionHandler: compeletionHandler)
+    }
+    
     private init() {}
     
 }

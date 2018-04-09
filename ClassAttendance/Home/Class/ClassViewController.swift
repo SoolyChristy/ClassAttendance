@@ -43,7 +43,7 @@ class ClassViewController: BaseViewController {
     }
     
     private func setupUI() {
-        title = "编译原理"
+        title = myClass.lesson
         let rightBtn = UIButton()
         rightBtn.setTitle("完成", for: .normal)
         rightBtn.setTitleColor(mainColor, for: .normal)
@@ -53,21 +53,14 @@ class ClassViewController: BaseViewController {
         rightBtn.addTarget(self, action: #selector(doneBtnAction), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
         
-        let iconImage = UIImage(named: myClass.icon)
         let headerView = UIView()
         headerView.backgroundColor = .lightGray
         headerView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kHeaderHeight)
-        let backImageView = UIImageView()
-        backImageView.image = iconImage
-        backImageView.frame = headerView.bounds
-        let blurEffect = UIBlurEffect(style: .light)
-        let visualView = UIVisualEffectView(effect: blurEffect)
-        visualView.frame = backImageView.bounds
-        backImageView.addSubview(visualView)
+        let backImageView = UIImageView.visualImageView(frame: headerView.bounds, imageName: myClass.icon)
         headerView.addSubview(backImageView)
 
         let iconView = UIImageView()
-        iconView.image = iconImage
+        iconView.image = UIImage(named: myClass.icon)
         headerView.addSubview(iconView)
         iconView.snp.makeConstraints { (make) in
             make.top.equalTo(headerView).offset(kNavHeight + scale(iPhone8Design: 16))
@@ -138,7 +131,7 @@ extension ClassViewController {
     
     @objc private func doneBtnAction() {
         myClass.students = students
-        DatabaseManager.shared.creatClass(aClass: myClass) { (result) in
+        ClassManager.shared.creatClass(aClass: myClass) { (result) in
             switch result {
             case .success:
                 break
@@ -174,6 +167,23 @@ extension ClassViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "删除"
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        students.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .left)
     }
     
 //    func scrollViewDidScroll(_ scrollView: UIScrollView) {

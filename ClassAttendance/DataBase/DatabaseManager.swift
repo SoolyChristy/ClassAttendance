@@ -27,8 +27,11 @@ public enum DBError {
     
     public enum ClassError {
         case idRepeat
+        case updateError
         case unknown
     }
+    
+    case unknown
 }
 
 public enum Result<ErrorType> {
@@ -132,6 +135,22 @@ extension DatabaseManager {
 }
 
 extension DatabaseManager {
+    
+    public func update(user: User, compeletionHandler: @escaping Handler<DBError>) {
+        inserOrReplace(objects: [user], intoTable: kUserTableName) { (result) in
+            switch result {
+            case .success:
+                printLog("更新用户成功！ - \(user)")
+                compeletionHandler(.success)
+            case .failure(let error):
+                printLog("更新用户失败！ - \(error.localizedDescription)")
+                compeletionHandler(.failure(.unknown))
+            }
+        }
+    }
+}
+
+extension DatabaseManager {
 
     private func creatTables() {
         do {
@@ -147,6 +166,15 @@ extension DatabaseManager {
     private func insert<Object: TableEncodable>(objects: [Object], intoTable: String, handler: Handler<Swift.Error>?) {
         do {
             try dataBase.insert(objects: objects, intoTable: intoTable)
+            handler?(.success)
+        } catch let error {
+            handler?(.failure(error))
+        }
+    }
+    
+    private func inserOrReplace<Object: TableEncodable>(objects: [Object], intoTable: String, handler: Handler<Swift.Error>?) {
+        do {
+            try dataBase.insertOrReplace(objects: objects, intoTable: intoTable)
             handler?(.success)
         } catch let error {
             handler?(.failure(error))

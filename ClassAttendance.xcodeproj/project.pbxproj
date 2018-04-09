@@ -68,6 +68,7 @@
 		70863E322068C5CD0019CF27 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DFD2068C5CD0019CF27 /* Label.swift */; };
 		70863E332068C5CD0019CF27 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DFE2068C5CD0019CF27 /* SegmentedControl.swift */; };
 		70863E342068C5CD0019CF27 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DFF2068C5CD0019CF27 /* TextField.swift */; };
+		70AF2E91207B46C700A58F3A /* MyClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AF2E90207B46C700A58F3A /* MyClassCell.swift */; };
 		70C10FC82070F2FD00E0F289 /* AddStudentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C10FC72070F2FD00E0F289 /* AddStudentController.swift */; };
 		70CEADD02059593200CD2900 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEADCF2059593200CD2900 /* SignUpViewController.swift */; };
 		70D7858E2057EE98002483F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D7858D2057EE98002483F1 /* AppDelegate.swift */; };
@@ -173,6 +174,7 @@
 		70863DFD2068C5CD0019CF27 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		70863DFE2068C5CD0019CF27 /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		70863DFF2068C5CD0019CF27 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		70AF2E90207B46C700A58F3A /* MyClassCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyClassCell.swift; sourceTree = "<group>"; };
 		70C10FC72070F2FD00E0F289 /* AddStudentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudentController.swift; sourceTree = "<group>"; };
 		70CEADCF2059593200CD2900 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		70D7858A2057EE98002483F1 /* ClassAttendance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassAttendance.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -629,6 +631,7 @@
 				70D785C42057EFDF002483F1 /* HomeViewController.swift */,
 				7053F1E120613E1300CDB402 /* TextFiledView.xib */,
 				7053F1E320613EA400CDB402 /* TextFiledView.swift */,
+				70AF2E90207B46C700A58F3A /* MyClassCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1057,6 +1060,7 @@
 				70863E262068C5CD0019CF27 /* PhotoLibraryPickerViewController.swift in Sources */,
 				70863E132068C5CD0019CF27 /* Contacts.swift in Sources */,
 				70D785C52057EFDF002483F1 /* HomeViewController.swift in Sources */,
+				70AF2E91207B46C700A58F3A /* MyClassCell.swift in Sources */,
 				70863E322068C5CD0019CF27 /* Label.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
