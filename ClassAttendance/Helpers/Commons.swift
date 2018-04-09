@@ -37,7 +37,7 @@ public func printLog<T>(_ message: T,
 }
 
 public func colorToImage(color: UIColor) -> UIImage {
-    let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+    let rect = CGRect(x: 0, y: 0, width: 10, height: 10)
     UIGraphicsBeginImageContext(rect.size)
     let context = UIGraphicsGetCurrentContext()
     context!.setFillColor(color.cgColor)

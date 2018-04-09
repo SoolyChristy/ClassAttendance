@@ -21,6 +21,11 @@ class MyClassCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    public func update(model: Class?, target: UIViewController) {
+        aClass = model
+        vc = target
+    }
+    
     private func setupUI() {
         selectionStyle = .none
         contentView.addSubview(container)
@@ -58,6 +63,14 @@ class MyClassCell: UITableViewCell {
         lessonLabel.snp.makeConstraints { (make) in
             make.left.equalTo(nameLabel)
             make.top.equalTo(nameLabel.snp.bottom).offset(scale(iPhone8Design: 4))
+        }
+        
+        let startBtn = UIButton.customButton(title: "点名", size: CGSize(width: scale(iPhone8Design: 48), height: scale(iPhone8Design: 28)), titleFont: UIFont.systemFont(ofSize: 13))
+        startBtn.addTarget(self, action: #selector(startBtnAction), for: .touchUpInside)
+        container.addSubview(startBtn)
+        startBtn.snp.makeConstraints { (make) in
+            make.right.equalTo(container).inset(kBigTitleMargin)
+            make.centerY.equalTo(iconView)
         }
         
         let kMargin = (kScreenWidth - 3 * kHeight - 2 - 2 * kBigTitleMargin) / 6
@@ -114,6 +127,8 @@ class MyClassCell: UITableViewCell {
         
     }
     
+    private var aClass: Class?
+    private weak var vc: UIViewController?
     private let iconView = UIImageView()
     private let lessonLabel = UILabel()
     private let nameLabel = UILabel()
@@ -123,6 +138,16 @@ class MyClassCell: UITableViewCell {
     private let leaveView = AttendenceDataView()
     private let container = UIView()
     private let colors: [Int64] = [0xffFEA47F, 0xff25CCF7, 0xffEAB543, 0xff58B19F, 0xff82589F, 0xff6D214F, 0xffBDC581, 0xffee5253, 0xfff368e0, 0xff48dbfb, 0xff576574, 0xfff8a5c2, 0xffc44569, 0xff303952, 0xfffff200, 0xff3d3d3d, 0xff3ae374]
+}
+
+extension MyClassCell {
+    @objc private func startBtnAction() {
+        guard let aClass = aClass else {
+            return
+        }
+        let toVc = ClassViewController(class: aClass, style: .callTheRoll)
+        vc?.navigationController?.pushViewController(toVc, animated: true)
+    }
 }
 
 extension MyClassCell {

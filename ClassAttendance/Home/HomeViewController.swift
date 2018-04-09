@@ -34,6 +34,18 @@ class HomeViewController: BaseViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
     private func setupUI() {
         navigationItem.title = "首页"
         let addClassItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addClassBtnAction))
@@ -93,6 +105,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         case .myClass:
             let cell = tableView.dequeueReusableCell(withIdentifier: kMyClassCellId, for: indexPath) as! MyClassCell
+            let aClass = Class(name: "计科1401班", lesson: "计算机网络", icon: "ic_defalut_class", dates: [ClassDate](), students: [Student]())
+            cell.update(model: aClass, target: self)
             return cell
         default:
             return UITableViewCell()
@@ -120,5 +134,16 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         }
         label.sizeToFit()
         return view
+    }
+    
+    // 取消tableview section header黏性
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let kHeaderHeight: CGFloat = 28
+        let y = scrollView.contentOffset.y
+        if y <= kHeaderHeight && y >= 0 {
+            scrollView.contentInset = UIEdgeInsets(top: -y, left: 0, bottom: 0, right: 0)
+        } else if y >= kHeaderHeight {
+            scrollView.contentInset = UIEdgeInsets(top: -kHeaderHeight, left: 0, bottom: 0, right: 0)
+        }
     }
 }

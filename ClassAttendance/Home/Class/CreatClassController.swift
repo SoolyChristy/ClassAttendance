@@ -96,7 +96,7 @@ extension CreatClassController {
         }
         
         let `class` = Class(name: name, lesson: lesson, icon: "ic_defalut_class", dates: dates, students: [Student]())
-        navigationController?.pushViewController(ClassViewController(class: `class`), animated: true)
+        navigationController?.pushViewController(ClassViewController(class: `class`, style: .normal), animated: true)
     }
     
     @objc private func iconBtnAction() {

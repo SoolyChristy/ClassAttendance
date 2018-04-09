@@ -13,8 +13,14 @@ private let kHeaderHeight = scale(iPhone8Design: 240)
 
 class ClassViewController: BaseViewController {
 
-    init(class: Class) {
+    public enum Style {
+        case callTheRoll
+        case normal
+    }
+    
+    init(class: Class, style: Style) {
         self.myClass = `class`
+        self.style = style
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -122,6 +128,7 @@ class ClassViewController: BaseViewController {
         }
     }
     
+    private let style: Style
     private var myClass: Class
     private var students = [Student]()
     private let tableView = UITableView()
@@ -160,9 +167,8 @@ extension ClassViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: kReuseId, for: indexPath) as? ClassStudentCell
-        cell?.update(model: students[indexPath.row])
-        return cell ?? ClassStudentCell()
+        let cell = ClassStudentCell.studentCell(tableView: tableView, model: students[indexPath.row], style: style)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
