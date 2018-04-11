@@ -14,15 +14,16 @@ private let kCurrentAccountKey = "currentAccount"
 class AccountManager {
     static let shared = AccountManager()
     
-    public var currentUser: User? = {
+    public func currentUser() -> User? {
         guard let id = UserDefaults.standard.object(forKey: kCurrentAccountKey) as? Int else {
+            printLog("用户未登录")
             return nil
         }
         return DatabaseManager.shared.getUser(identifier: id)
-    }()
+    }
     
     public func appFinishLaunching() {
-        guard let _ = currentUser else {
+        guard let _ = currentUser() else {
             let loginVc = NavViewController(rootViewController: LoginViewController())
             keyWindow?.rootViewController?.present(loginVc, animated: false)
             return

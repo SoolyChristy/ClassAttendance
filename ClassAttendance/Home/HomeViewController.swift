@@ -38,6 +38,8 @@ class HomeViewController: BaseViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
+        classes = ClassManager.shared.getMyClasses()
+        tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -56,7 +58,6 @@ class HomeViewController: BaseViewController {
         tableView.tableHeaderView = headerView
         tableView.delegate = self
         tableView.dataSource = self
-//        tableView.bounces = false
         tableView.separatorStyle = .none
         tableView.register(MyClassCell.self, forCellReuseIdentifier: kMyClassCellId)
         view.addSubview(tableView)
@@ -66,6 +67,7 @@ class HomeViewController: BaseViewController {
     }
     
     private let tableView = UITableView()
+    private var classes: [Class] = ClassManager.shared.getMyClasses()
 }
 
 extension HomeViewController {
@@ -84,7 +86,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         case .today:
             return 1
         case .myClass:
-            return 10
+            return classes.count
         default:
             return 1
         }
@@ -105,8 +107,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         case .myClass:
             let cell = tableView.dequeueReusableCell(withIdentifier: kMyClassCellId, for: indexPath) as! MyClassCell
-            let aClass = Class(name: "计科1401班", lesson: "计算机网络", icon: "ic_defalut_class", dates: [ClassDate](), students: [Student]())
-            cell.update(model: aClass, target: self)
+//            let aClass = Class(name: "计科1401班", lesson: "计算机网络", icon: "ic_defalut_class", dates: [ClassDate](), students: [Student]())
+            cell.update(model: classes[indexPath.row], target: self)
             return cell
         default:
             return UITableViewCell()
@@ -134,6 +136,18 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         }
         label.sizeToFit()
         return view
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch Section(rawValue: indexPath.section) ?? .max {
+        case .today:
+            break
+        case .myClass:
+            let vc = ClassViewController(class: classes[indexPath.row], style: .normal)
+            navigationController?.pushViewController(vc, animated: true)
+        default:
+            break
+        }
     }
     
     // 取消tableview section header黏性

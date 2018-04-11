@@ -30,9 +30,9 @@ class ClassViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let s1 = Student(name: "罗建武", id: 201421091024, phone: 1316666, icon: "ic_boy", sex: .male, late: nil, absenteeism: nil, earlyLeave: nil, leave: nil)
-        let s2 = Student(name: "罗建武", id: 201421091024, phone: 1316666, icon: "ic_boy", sex: .male, late: nil, absenteeism: nil, earlyLeave: nil, leave: nil)
-        let s3 = Student(name: "罗建武", id: 201421091024, phone: 1316666, icon: "ic_boy", sex: .male, late: nil, absenteeism: nil, earlyLeave: nil, leave: nil)
+        let s1 = Student(name: "罗建武", id: 201421091024, phone: 1316666, icon: "ic_boy", sex: .male)
+        let s2 = Student(name: "罗建武", id: 201421091024, phone: 1316666, icon: "ic_boy", sex: .male)
+        let s3 = Student(name: "罗建武", id: 201421091024, phone: 1316666, icon: "ic_boy", sex: .male)
         students = [s1, s2, s3]
         setupUI()
     }
@@ -141,7 +141,7 @@ extension ClassViewController {
         ClassManager.shared.creatClass(aClass: myClass) { (result) in
             switch result {
             case .success:
-                break
+                self.navigationController?.popToRootViewController(animated: true)
             case .failure(let error):
                 if error == .idRepeat {
                     self.view.makeToast("请勿重复创建课堂！")

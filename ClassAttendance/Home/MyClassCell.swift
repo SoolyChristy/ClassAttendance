@@ -21,9 +21,13 @@ class MyClassCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func update(model: Class?, target: UIViewController) {
+    public func update(model: Class, target: UIViewController) {
         aClass = model
         vc = target
+        nameLabel.text = model.name
+        iconView.image = UIImage(named: model.icon)
+        lessonLabel.text = model.lesson
+        
     }
     
     private func setupUI() {
@@ -41,7 +45,7 @@ class MyClassCell: UITableViewCell {
             make.edges.equalTo(container)
         }
         
-        iconView.image = UIImage(named: "ic_defalut_class")
+        iconView.image = #imageLiteral(resourceName: "ic_defalut_class")
         container.addSubview(iconView)
         iconView.snp.makeConstraints { (make) in
             make.top.equalTo(container).inset(kBigTitleMargin)

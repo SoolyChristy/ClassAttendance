@@ -52,6 +52,7 @@ class DatabaseManager {
     }
 }
 
+// MARK: 创建表
 extension DatabaseManager {
 
     public func creatUser(identifier: Int,
@@ -105,6 +106,7 @@ extension DatabaseManager {
     }
 }
 
+// MARK: 用户
 extension DatabaseManager {
     public func getUser(identifier: Int) -> User? {
         do {
@@ -134,6 +136,33 @@ extension DatabaseManager {
     }
 }
 
+// MARK: 查找
+extension DatabaseManager {
+    public func getObjects<Object: TableCodable>(where condition: WCDBSwift.Condition?, orderBy: [OrderBy]?) -> [Object]? {
+        var table: String?
+        if Object.self == Class.self {
+            table = kClassTabelName
+        } else if Object.self == User.self {
+            table = kUserTableName
+        } else if Object.self == AttendanceRecord.self {
+            table = kAttendanceRecordName
+        }
+        guard let tableName = table else {
+            printLog("查找失败 - Object不合法")
+            return nil
+        }
+        do {
+            let objects: [Object] = try dataBase.getObjects(fromTable: tableName, where: condition, orderBy: orderBy)
+            printLog("查找成功 - 查到\(objects.count)条结果")
+            return objects
+        } catch let error {
+            printLog("查找失败 - \(error)")
+            return nil
+        }
+    }
+}
+
+// MARK: 更新
 extension DatabaseManager {
     
     public func update(user: User, compeletionHandler: @escaping Handler<DBError>) {
@@ -150,6 +179,7 @@ extension DatabaseManager {
     }
 }
 
+// MARK: Private方法
 extension DatabaseManager {
 
     private func creatTables() {

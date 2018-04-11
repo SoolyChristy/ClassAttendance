@@ -64,17 +64,17 @@ struct Class: TableCodable {
     var icon: String
     var dates: [ClassDate]
     var students: [Student]
-    var attendanceSheets: [AttendanceRecord]?
+//    var attendanceSheets: [AttendanceRecord]?
     
     init(name: String, lesson: String, icon: String, dates: [ClassDate], students: [Student]) {
         self.id = name + lesson
-        self.userId = AccountManager.shared.currentUser?.identifier ?? 0
+        self.userId = AccountManager.shared.currentUser()?.identifier ?? 0
         self.name = name
         self.lesson = lesson
         self.icon = icon
         self.dates = dates
         self.students = students
-        self.attendanceSheets = [AttendanceRecord]()
+//        self.attendanceSheets = [AttendanceRecord]()
     }
     
     enum CodingKeys: String, CodingTableKey {
@@ -87,7 +87,7 @@ struct Class: TableCodable {
         case icon
         case students
         case lesson
-        case attendanceSheets
+//        case attendanceSheets
         
         static var columnConstraintBindings: [CodingKeys: ColumnConstraintBinding]? {
             return [id: ColumnConstraintBinding(isPrimary: true)]
@@ -102,10 +102,6 @@ struct Student: TableCodable {
     var phone: Int
     var icon: String
     var sex: Sex
-    var late: [AttendanceDetail]?
-    var absenteeism: [AttendanceDetail]?
-    var earlyLeave: [AttendanceDetail]?
-    var leave: [AttendanceDetail]?
     
     enum CodingKeys: String, CodingTableKey {
         typealias Root = Student
@@ -114,10 +110,6 @@ struct Student: TableCodable {
         case id
         case phone
         case icon
-        case late
-        case absenteeism
-        case earlyLeave
-        case leave
         case sex
     }
 }
@@ -137,20 +129,22 @@ struct AttendanceDetail: TableCodable {
 
 /// 考勤表
 struct AttendanceRecord: TableCodable {
-    var date: Date?
-    var info: String?
-    var late: [Student]?
-    var leave: [Student]?
-    var earlyLeave: [Student]?
+    var classId: String
+    var date: Date
+    var info: String
+    var late: [Student]
+    var leave: [Student]
+    var absenteeism: [Student]
     
     enum CodingKeys: String, CodingTableKey {
         typealias Root = AttendanceRecord
         static let objectRelationalMapping = TableBinding(CodingKeys.self)
+        case classId
         case date
         case info
         case late
         case leave
-        case earlyLeave
+        case absenteeism
     }
 }
 
