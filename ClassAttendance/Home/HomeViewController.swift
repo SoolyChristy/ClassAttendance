@@ -143,7 +143,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         case .today:
             break
         case .myClass:
-            let vc = ClassViewController(class: classes[indexPath.row], style: .normal)
+            let vc = ClassViewController(class: classes[indexPath.row], style: .edit)
             navigationController?.pushViewController(vc, animated: true)
         default:
             break

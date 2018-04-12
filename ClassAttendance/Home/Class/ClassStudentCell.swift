@@ -8,28 +8,45 @@
 
 import UIKit
 
-private let kReuseId = "class.student.cell"
+protocol ClassStudentCellDelegate: NSObjectProtocol {
+    func studentCell(_ cell: ClassStudentCell, didSelectedAttendance type: AttendanceType)
+}
 
 class ClassStudentCell: UITableViewCell {
     
-    public enum AttenanceType: Int {
-        case late = 0
-        case absenteeism
-        case leave
-    }
+    weak var delegate: ClassStudentCellDelegate?
+    public var indexPath: IndexPath?
+    public var student: Student?
+    public var lastPick: AttendanceType?
     
-    public class func studentCell(tableView: UITableView, model: Student, style: ClassViewController.Style) -> ClassStudentCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: kReuseId) as! ClassStudentCell
-        cell.style = style
-        cell.setupUI()
-        cell.update(model: model)
-        return cell
-    }
-    
-    public func update(model: Student) {
+    public func update(model: Student, style: ClassViewController.Style, attendanceType: AttendanceType?, indexPath: IndexPath) {
+        self.style = style
+        self.indexPath = indexPath
+        self.student = model
+        setupUI()
         iconView.image = UIImage(named: model.icon)
         nameLabel.text = model.name
         numberLabel.text = "\(model.id)"
+        if let attendanceType = attendanceType {
+            switch attendanceType {
+            case .none:
+                absenteeismBtn.isSelected = false
+                lateBtn.isSelected = false
+                leaveBtn.isSelected = false
+            case .absenteeism:
+                absenteeismBtn.isSelected = true
+                lateBtn.isSelected = false
+                leaveBtn.isSelected = false
+            case .late:
+                lateBtn.isSelected = true
+                absenteeismBtn.isSelected = false
+                leaveBtn.isSelected = false
+            case .leave:
+                leaveBtn.isSelected = true
+                absenteeismBtn.isSelected = false
+                lateBtn.isSelected = false
+            }
+        }
     }
     
     private func setupUI() {
@@ -92,7 +109,7 @@ class ClassStudentCell: UITableViewCell {
     
     private lazy var lateBtn: UIButton = {
         let btn = UIButton()
-        btn.tag = AttenanceType.late.rawValue
+        btn.tag = AttendanceType.late.rawValue
         btn.addTarget(self, action: #selector(functionBtnAction(btn:)), for: .touchUpInside)
         btn.setImage(#imageLiteral(resourceName: "ic_late"), for: .normal)
         btn.setImage(#imageLiteral(resourceName: "ic_late_selected"), for: .selected)
@@ -101,7 +118,7 @@ class ClassStudentCell: UITableViewCell {
 
     private lazy var absenteeismBtn: UIButton = {
        let btn = UIButton()
-        btn.tag = AttenanceType.absenteeism.rawValue
+        btn.tag = AttendanceType.absenteeism.rawValue
         btn.addTarget(self, action: #selector(functionBtnAction(btn:)), for: .touchUpInside)
         btn.setImage(#imageLiteral(resourceName: "ic_absenteeism"), for: .normal)
         btn.setImage(#imageLiteral(resourceName: "ic_absenteeism_selected"), for: .selected)
@@ -110,7 +127,7 @@ class ClassStudentCell: UITableViewCell {
     
     private lazy var leaveBtn: UIButton = {
        let btn = UIButton()
-        btn.tag = AttenanceType.leave.rawValue
+        btn.tag = AttendanceType.leave.rawValue
         btn.addTarget(self, action: #selector(functionBtnAction(btn:)), for: .touchUpInside)
         btn.setImage(#imageLiteral(resourceName: "ic_leave"), for: .normal)
         btn.setImage(#imageLiteral(resourceName: "ic_leave_selected"), for: .selected)
@@ -120,11 +137,18 @@ class ClassStudentCell: UITableViewCell {
 
 extension ClassStudentCell {
     @objc private func functionBtnAction(btn: UIButton) {
-        guard let type = AttenanceType(rawValue: btn.tag) else {
+        guard var type = AttendanceType(rawValue: btn.tag) else {
             return
+        }
+        if btn.isSelected {
+            type = .none
         }
         btn.isSelected = !btn.isSelected
         switch type {
+        case .none:
+            absenteeismBtn.isSelected = false
+            lateBtn.isSelected = false
+            leaveBtn.isSelected = false
         case .absenteeism:
             lateBtn.isSelected = false
             leaveBtn.isSelected = false
@@ -135,5 +159,7 @@ extension ClassStudentCell {
             lateBtn.isSelected = false
             absenteeismBtn.isSelected = false
         }
+        printLog("\(student?.name ?? "") - 学号:\(student?.id ?? 0) \(type.description)")
+        delegate?.studentCell(self, didSelectedAttendance: type)
     }
 }

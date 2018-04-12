@@ -10,10 +10,11 @@ import Foundation
 import WCDBSwift
 
 public typealias ClassDate = [Int: Date]
+public typealias ID = Int
 
 /// 用户
 struct User: TableCodable {
-    var identifier: Int
+    var identifier: ID
     var password: String
     var userName: String
     var phoneNum: Int
@@ -58,13 +59,12 @@ struct Lesson: TableCodable {
 /// 班级
 struct Class: TableCodable {
     var id: String
-    var userId: Int
+    var userId: ID
     var name: String
     var lesson: String
     var icon: String
     var dates: [ClassDate]
     var students: [Student]
-//    var attendanceSheets: [AttendanceRecord]?
     
     init(name: String, lesson: String, icon: String, dates: [ClassDate], students: [Student]) {
         self.id = name + lesson
@@ -74,7 +74,6 @@ struct Class: TableCodable {
         self.icon = icon
         self.dates = dates
         self.students = students
-//        self.attendanceSheets = [AttendanceRecord]()
     }
     
     enum CodingKeys: String, CodingTableKey {
@@ -87,7 +86,6 @@ struct Class: TableCodable {
         case icon
         case students
         case lesson
-//        case attendanceSheets
         
         static var columnConstraintBindings: [CodingKeys: ColumnConstraintBinding]? {
             return [id: ColumnConstraintBinding(isPrimary: true)]
@@ -98,7 +96,8 @@ struct Class: TableCodable {
 /// 学生
 struct Student: TableCodable {
     var name: String
-    var id: Int
+//    var classId: String
+    var id: ID
     var phone: Int
     var icon: String
     var sex: Sex
@@ -108,6 +107,7 @@ struct Student: TableCodable {
         static let objectRelationalMapping = TableBinding(CodingKeys.self)
         case name
         case id
+//        case classId
         case phone
         case icon
         case sex
@@ -153,15 +153,26 @@ public enum Sex: String, Codable {
     case female = "女"
 }
 
-//struct RecordDetail: TableCodable {
-////    var student: Student?
-//    var test: String
-//
-//    enum CodingKeys: String, CodingTableKey {
-//        typealias Root = RecordDetail
-//        static let objectRelationalMapping = TableBinding(CodingKeys.self)
-////        case student
-//        case test
-//    }
-//}
+public enum AttendanceType: Int {
+    case none = 0
+    case late
+    case leave
+    case absenteeism
+}
+
+extension AttendanceType: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .none:
+            return "正常出勤"
+        case .late:
+            return "迟到"
+        case .leave:
+            return "请假"
+        case .absenteeism:
+            return "缺课"
+        }
+    }
+    
+}
 

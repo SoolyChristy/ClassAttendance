@@ -33,5 +33,9 @@ final class ClassManager {
 
         return classes ?? [Class]()
     }
+    
+    public func update(_ aClass: Class, compeletionHandler: @escaping Handler<DBError>) {
+        DatabaseManager.shared.update(objects: [aClass], handler: compeletionHandler)
+    }
 
 }

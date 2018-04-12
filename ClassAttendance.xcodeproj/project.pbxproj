@@ -68,6 +68,7 @@
 		70863E322068C5CD0019CF27 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DFD2068C5CD0019CF27 /* Label.swift */; };
 		70863E332068C5CD0019CF27 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DFE2068C5CD0019CF27 /* SegmentedControl.swift */; };
 		70863E342068C5CD0019CF27 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DFF2068C5CD0019CF27 /* TextField.swift */; };
+		709DF566207F988400D3C522 /* CallTheRollManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709DF565207F988400D3C522 /* CallTheRollManager.swift */; };
 		70AF2E91207B46C700A58F3A /* MyClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AF2E90207B46C700A58F3A /* MyClassCell.swift */; };
 		70C10FC82070F2FD00E0F289 /* AddStudentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C10FC72070F2FD00E0F289 /* AddStudentController.swift */; };
 		70CEADD02059593200CD2900 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEADCF2059593200CD2900 /* SignUpViewController.swift */; };
@@ -174,6 +175,7 @@
 		70863DFD2068C5CD0019CF27 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		70863DFE2068C5CD0019CF27 /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		70863DFF2068C5CD0019CF27 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		709DF565207F988400D3C522 /* CallTheRollManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTheRollManager.swift; sourceTree = "<group>"; };
 		70AF2E90207B46C700A58F3A /* MyClassCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyClassCell.swift; sourceTree = "<group>"; };
 		70C10FC72070F2FD00E0F289 /* AddStudentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudentController.swift; sourceTree = "<group>"; };
 		70CEADCF2059593200CD2900 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -673,6 +675,7 @@
 				70F5B643206A671700EEADE6 /* ClassViewController.swift */,
 				70F5B653206A6CFB00EEADE6 /* ClassStudentCell.swift */,
 				70C10FC72070F2FD00E0F289 /* AddStudentController.swift */,
+				709DF565207F988400D3C522 /* CallTheRollManager.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -1031,6 +1034,7 @@
 				70863E142068C5CD0019CF27 /* Contact.swift in Sources */,
 				70CEADD02059593200CD2900 /* SignUpViewController.swift in Sources */,
 				70863E312068C5CD0019CF27 /* GradientSlider.swift in Sources */,
+				709DF566207F988400D3C522 /* CallTheRollManager.swift in Sources */,
 				70863E1E2068C5CD0019CF27 /* CurrencyCell.swift in Sources */,
 				70D8F2942059388F0059A24E /* Commons.swift in Sources */,
 				70863E1D2068C5CD0019CF27 /* CountryCell.swift in Sources */,

@@ -31,6 +31,8 @@ public enum DBError {
         case unknown
     }
     
+    case updateError
+    case objectIsNotLegal
     case unknown
 }
 
@@ -139,15 +141,7 @@ extension DatabaseManager {
 // MARK: 查找
 extension DatabaseManager {
     public func getObjects<Object: TableCodable>(where condition: WCDBSwift.Condition?, orderBy: [OrderBy]?) -> [Object]? {
-        var table: String?
-        if Object.self == Class.self {
-            table = kClassTabelName
-        } else if Object.self == User.self {
-            table = kUserTableName
-        } else if Object.self == AttendanceRecord.self {
-            table = kAttendanceRecordName
-        }
-        guard let tableName = table else {
+        guard let tableName = getTabel(Object: Object.self) else {
             printLog("查找失败 - Object不合法")
             return nil
         }
@@ -177,6 +171,24 @@ extension DatabaseManager {
             }
         }
     }
+    
+    public func update<object: TableEncodable>(objects: [object], handler: @escaping Handler<DBError>) {
+        guard let table = getTabel(Object: object.self) else {
+            let error = DBError.objectIsNotLegal
+            handler(.failure(error))
+            return
+        }
+        inserOrReplace(objects: objects, intoTable: table) { (result) in
+            switch result {
+            case .success:
+                printLog("更新数据成功! - \(objects)")
+                handler(.success)
+            case .failure(let error):
+                printLog("更新数据失败！ - \(error)")
+                handler(.failure(.updateError))
+            }
+        }
+    }
 }
 
 // MARK: Private方法
@@ -191,6 +203,18 @@ extension DatabaseManager {
         } catch let error {
             printLog("创建表失败 - \(error)")
         }
+    }
+    
+    private func getTabel<Object: TableEncodable>(Object: Object.Type) -> String? {
+        var table: String?
+        if Object.self == Class.self {
+            table = kClassTabelName
+        } else if Object.self == User.self {
+            table = kUserTableName
+        } else if Object.self == AttendanceRecord.self {
+            table = kAttendanceRecordName
+        }
+        return table
     }
 
     private func insert<Object: TableEncodable>(objects: [Object], intoTable: String, handler: Handler<Swift.Error>?) {

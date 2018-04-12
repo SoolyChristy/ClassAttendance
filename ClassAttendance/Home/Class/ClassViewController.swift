@@ -16,6 +16,7 @@ class ClassViewController: BaseViewController {
     public enum Style {
         case callTheRoll
         case normal
+        case edit
     }
     
     init(class: Class, style: Style) {
@@ -30,10 +31,6 @@ class ClassViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let s1 = Student(name: "罗建武", id: 201421091024, phone: 1316666, icon: "ic_boy", sex: .male)
-        let s2 = Student(name: "罗建武", id: 201421091024, phone: 1316666, icon: "ic_boy", sex: .male)
-        let s3 = Student(name: "罗建武", id: 201421091024, phone: 1316666, icon: "ic_boy", sex: .male)
-        students = [s1, s2, s3]
         setupUI()
     }
     
@@ -130,31 +127,46 @@ class ClassViewController: BaseViewController {
     
     private let style: Style
     private var myClass: Class
-    private var students = [Student]()
+    private var attendance = [AttendanceType]()
+    private lazy var callTheRollMgr: CallTheRollManager = CallTheRollManager(studentCount: myClass.students.count)
     private let tableView = UITableView()
 }
 
 extension ClassViewController {
     
     @objc private func doneBtnAction() {
-        myClass.students = students
-        ClassManager.shared.creatClass(aClass: myClass) { (result) in
-            switch result {
-            case .success:
-                self.navigationController?.popToRootViewController(animated: true)
-            case .failure(let error):
-                if error == .idRepeat {
-                    self.view.makeToast("请勿重复创建课堂！")
-                } else {
-                    self.view.makeToast("创建课堂失败！")
+        switch style {
+        case .normal:
+            ClassManager.shared.creatClass(aClass: myClass) { (result) in
+                switch result {
+                case .success:
+                    self.navigationController?.popToRootViewController(animated: true)
+                case .failure(let error):
+                    if error == .idRepeat {
+                        self.view.makeToast("请勿重复创建课堂！")
+                    } else {
+                        self.view.makeToast("创建课堂失败！")
+                    }
                 }
             }
+        case .edit:
+            ClassManager.shared.update(myClass, compeletionHandler: { (result) in
+                switch result {
+                case .success:
+                    self.navigationController?.popToRootViewController(animated: true)
+                case .failure(_):
+                    keyWindow?.makeToast("更新数据失败！")
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            })
+        case .callTheRoll:
+            callTheRollMgr.finishCall()
         }
     }
     
     @objc private func addBtnAction() {
         let addStudentVc = AddStudentController { (student) in
-            self.students.append(student)
+            self.myClass.students.append(student)
             self.tableView.reloadData()
         }
         navigationController?.pushViewController(addStudentVc, animated: true)
@@ -163,11 +175,16 @@ extension ClassViewController {
 
 extension ClassViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return students.count
+        return myClass.students.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = ClassStudentCell.studentCell(tableView: tableView, model: students[indexPath.row], style: style)
+        let cell = tableView.dequeueReusableCell(withIdentifier: kReuseId, for: indexPath) as! ClassStudentCell
+        cell.delegate = callTheRollMgr
+        cell.update(model: myClass.students[indexPath.row],
+                    style: style,
+                    attendanceType: style == .callTheRoll ? callTheRollMgr.attendanceTags[indexPath.row] : nil,
+                    indexPath: indexPath)
         return cell
     }
     
@@ -188,14 +205,10 @@ extension ClassViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        students.remove(at: indexPath.row)
+        myClass.students.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .left)
     }
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
-//        navigationController?.setNavigationBarHidden(translation.y < 0, animated: true)
-//    }
+
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         navigationController?.setNavigationBarHidden(velocity.y > 0, animated: true)
     }
