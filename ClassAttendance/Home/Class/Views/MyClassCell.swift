@@ -10,17 +10,8 @@ import UIKit
 
 private let kHeight = scale(iPhone8Design: 40)
 
-class MyClassCell: UITableViewCell {
+class MyClassCell: AnimationCell {
 
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupUI()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     public func update(model: Class, target: UIViewController) {
         aClass = model
         vc = target
@@ -30,21 +21,15 @@ class MyClassCell: UITableViewCell {
         
     }
     
-    private func setupUI() {
-        selectionStyle = .none
-        contentView.addSubview(container)
-        container.snp.makeConstraints { (make) in
-            make.left.right.equalTo(contentView).inset(kBigTitleMargin)
-            make.top.equalTo(contentView).inset(scale(iPhone8Design: 6))
-            make.bottom.equalTo(contentView).inset(scale(iPhone8Design: 12))
-        }
+    override func setupUI() {
+        super.setupUI()
         let backView = UIImageView.visualImageView(frame: CGRect(), imageName: nil)
-        backView.backgroundColor = rgbColor(colors.randomItem ?? 0xffFEA47F)
+        backView.backgroundColor = randomColor()
         container.addSubview(backView)
         backView.snp.makeConstraints { (make) in
             make.edges.equalTo(container)
         }
-        
+
         iconView.image = #imageLiteral(resourceName: "ic_defalut_class")
         container.addSubview(iconView)
         iconView.snp.makeConstraints { (make) in
@@ -130,7 +115,7 @@ class MyClassCell: UITableViewCell {
         }
         
     }
-    
+
     private var aClass: Class?
     private weak var vc: UIViewController?
     private let iconView = UIImageView()
@@ -140,8 +125,6 @@ class MyClassCell: UITableViewCell {
     private let absenteeismView = AttendenceDataView()
     private let lateView = AttendenceDataView()
     private let leaveView = AttendenceDataView()
-    private let container = UIView()
-    private let colors: [Int64] = [0xffFEA47F, 0xff25CCF7, 0xffEAB543, 0xff58B19F, 0xff82589F, 0xff6D214F, 0xffBDC581, 0xffee5253, 0xfff368e0, 0xff48dbfb, 0xff576574, 0xfff8a5c2, 0xffc44569, 0xff303952, 0xfffff200, 0xff3d3d3d, 0xff3ae374]
 }
 
 extension MyClassCell {
@@ -151,44 +134,6 @@ extension MyClassCell {
         }
         let toVc = ClassViewController(class: aClass, style: .callTheRoll)
         vc?.navigationController?.pushViewController(toVc, animated: true)
-    }
-}
-
-extension MyClassCell {
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        beginAnimation()
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        endAnimation()
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        endAnimation()
-    }
-
-    private func beginAnimation() {
-        let animation = CABasicAnimation(keyPath: "transform.scale")
-        animation.duration = 0.25
-        animation.toValue = 0.95
-        animation.isRemovedOnCompletion = false
-        animation.fillMode = kCAFillModeForwards
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-        container.layer.add(animation, forKey: nil)
-    }
-    
-    private func endAnimation() {
-        let animation = CABasicAnimation(keyPath: "transform.scale")
-        animation.duration = 0.25
-        animation.toValue = 1
-        animation.isRemovedOnCompletion = false
-        animation.fillMode = kCAFillModeForwards
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-        container.layer.add(animation, forKey: nil)
     }
 }
 

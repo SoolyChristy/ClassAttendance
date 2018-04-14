@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		04FB28C7D9E72FC13CDE27E4 /* Pods_ClassAttendanceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B13755DEB9FC311D71547F /* Pods_ClassAttendanceTests.framework */; };
+		50D93EAAF56536756D632C9A /* StudentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D93B484A0029D4F69B9F24 /* StudentManager.swift */; };
 		700A62EF205E8C1200AFDD18 /* CreatClassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A62EE205E8C1200AFDD18 /* CreatClassController.swift */; };
 		7011F3D8205A89A6007B9AD4 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7011F3D7205A89A6007B9AD4 /* AccountManager.swift */; };
 		7011F3DA205A8B20007B9AD4 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7011F3D9205A8B20007B9AD4 /* DatabaseManager.swift */; };
+		703F26B320810A6D00AD7FB4 /* ManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703F26B220810A6D00AD7FB4 /* ManagerProtocol.swift */; };
+		703F26B520810DE800AD7FB4 /* AttendanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703F26B420810DE800AD7FB4 /* AttendanceManager.swift */; };
 		7053F1E220613E1300CDB402 /* TextFiledView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7053F1E120613E1300CDB402 /* TextFiledView.xib */; };
 		7053F1E420613EA400CDB402 /* TextFiledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7053F1E320613EA400CDB402 /* TextFiledView.swift */; };
 		708043112078A68C005F7675 /* ClassManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708043102078A68C005F7675 /* ClassManager.swift */; };
@@ -68,7 +71,12 @@
 		70863E322068C5CD0019CF27 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DFD2068C5CD0019CF27 /* Label.swift */; };
 		70863E332068C5CD0019CF27 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DFE2068C5CD0019CF27 /* SegmentedControl.swift */; };
 		70863E342068C5CD0019CF27 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DFF2068C5CD0019CF27 /* TextField.swift */; };
+		709C8E1A2081D7E300AF1821 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709C8E192081D7E300AF1821 /* DetailViewController.swift */; };
+		709C8E1C2081DBBC00AF1821 /* CellAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709C8E1B2081DBBC00AF1821 /* CellAnimation.swift */; };
+		709C8E1F2081DDF400AF1821 /* AnimationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709C8E1E2081DDF400AF1821 /* AnimationCell.swift */; };
+		709C8E212081E39500AF1821 /* AttendanceRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709C8E202081E39500AF1821 /* AttendanceRecordCell.swift */; };
 		709DF566207F988400D3C522 /* CallTheRollManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709DF565207F988400D3C522 /* CallTheRollManager.swift */; };
+		709DF568207FACE600D3C522 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709DF567207FACE600D3C522 /* Extensions.swift */; };
 		70AF2E91207B46C700A58F3A /* MyClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AF2E90207B46C700A58F3A /* MyClassCell.swift */; };
 		70C10FC82070F2FD00E0F289 /* AddStudentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C10FC72070F2FD00E0F289 /* AddStudentController.swift */; };
 		70CEADD02059593200CD2900 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CEADCF2059593200CD2900 /* SignUpViewController.swift */; };
@@ -115,9 +123,12 @@
 /* Begin PBXFileReference section */
 		13AD5BF719D676565BC45A2B /* Pods-ClassAttendanceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClassAttendanceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClassAttendanceTests/Pods-ClassAttendanceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4B8B930EFB95504CF536AE70 /* Pods-ClassAttendanceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClassAttendanceUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClassAttendanceUITests/Pods-ClassAttendanceUITests.release.xcconfig"; sourceTree = "<group>"; };
+		50D93B484A0029D4F69B9F24 /* StudentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentManager.swift; sourceTree = "<group>"; };
 		700A62EE205E8C1200AFDD18 /* CreatClassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatClassController.swift; sourceTree = "<group>"; };
 		7011F3D7205A89A6007B9AD4 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		7011F3D9205A8B20007B9AD4 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		703F26B220810A6D00AD7FB4 /* ManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerProtocol.swift; sourceTree = "<group>"; };
+		703F26B420810DE800AD7FB4 /* AttendanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceManager.swift; sourceTree = "<group>"; };
 		7053F1E120613E1300CDB402 /* TextFiledView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFiledView.xib; sourceTree = "<group>"; };
 		7053F1E320613EA400CDB402 /* TextFiledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFiledView.swift; sourceTree = "<group>"; };
 		708043102078A68C005F7675 /* ClassManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassManager.swift; sourceTree = "<group>"; };
@@ -175,7 +186,12 @@
 		70863DFD2068C5CD0019CF27 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		70863DFE2068C5CD0019CF27 /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		70863DFF2068C5CD0019CF27 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		709C8E192081D7E300AF1821 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		709C8E1B2081DBBC00AF1821 /* CellAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellAnimation.swift; sourceTree = "<group>"; };
+		709C8E1E2081DDF400AF1821 /* AnimationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationCell.swift; sourceTree = "<group>"; };
+		709C8E202081E39500AF1821 /* AttendanceRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceRecordCell.swift; sourceTree = "<group>"; };
 		709DF565207F988400D3C522 /* CallTheRollManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTheRollManager.swift; sourceTree = "<group>"; };
+		709DF567207FACE600D3C522 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		70AF2E90207B46C700A58F3A /* MyClassCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyClassCell.swift; sourceTree = "<group>"; };
 		70C10FC72070F2FD00E0F289 /* AddStudentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudentController.swift; sourceTree = "<group>"; };
 		70CEADCF2059593200CD2900 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -548,6 +564,45 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		709C8E182081D79300AF1821 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				709C8E192081D7E300AF1821 /* DetailViewController.swift */,
+				709C8E202081E39500AF1821 /* AttendanceRecordCell.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		709C8E1D2081DD9300AF1821 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				70CEADCE2059519A00CD2900 /* UI */,
+				70D8F2932059388E0059A24E /* Commons.swift */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		709DF569207FADE000D3C522 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				70C10FC72070F2FD00E0F289 /* AddStudentController.swift */,
+				700A62EE205E8C1200AFDD18 /* CreatClassController.swift */,
+				70F5B643206A671700EEADE6 /* ClassViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		709DF56A207FAE0A00D3C522 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7053F1E120613E1300CDB402 /* TextFiledView.xib */,
+				7053F1E320613EA400CDB402 /* TextFiledView.swift */,
+				70AF2E90207B46C700A58F3A /* MyClassCell.swift */,
+				70F5B653206A6CFB00EEADE6 /* ClassStudentCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		70CEADCE2059519A00CD2900 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -555,6 +610,8 @@
 				70D8F29820593E020059A24E /* UICommons.swift */,
 				70D8F2A5205947870059A24E /* InputView.swift */,
 				70D8F2A4205947870059A24E /* InputView.xib */,
+				709C8E1B2081DBBC00AF1821 /* CellAnimation.swift */,
+				709C8E1E2081DDF400AF1821 /* AnimationCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -587,7 +644,9 @@
 				70D785BB2057EF78002483F1 /* Main */,
 				70D8F290205937660059A24E /* Login */,
 				70D785BD2057EF85002483F1 /* DataBase */,
+				709C8E182081D79300AF1821 /* Detail */,
 				70D785BC2057EF7F002483F1 /* Home */,
+				709C8E1D2081DD9300AF1821 /* Commons */,
 				70D8F295205938A00059A24E /* Helpers */,
 				70D7858D2057EE98002483F1 /* AppDelegate.swift */,
 				70D785912057EE98002483F1 /* Main.storyboard */,
@@ -629,11 +688,8 @@
 		70D785BC2057EF7F002483F1 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				70F5B645206A695200EEADE6 /* Class */,
 				70D785C42057EFDF002483F1 /* HomeViewController.swift */,
-				7053F1E120613E1300CDB402 /* TextFiledView.xib */,
-				7053F1E320613EA400CDB402 /* TextFiledView.swift */,
-				70AF2E90207B46C700A58F3A /* MyClassCell.swift */,
+				70F5B645206A695200EEADE6 /* Class */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -660,9 +716,8 @@
 		70D8F295205938A00059A24E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				70CEADCE2059519A00CD2900 /* UI */,
-				70D8F2932059388E0059A24E /* Commons.swift */,
 				70D8F29620593C3E0059A24E /* Constans.swift */,
+				709DF567207FACE600D3C522 /* Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -670,12 +725,9 @@
 		70F5B645206A695200EEADE6 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				709DF569207FADE000D3C522 /* Controllers */,
+				709DF56A207FAE0A00D3C522 /* Views */,
 				70F5B646206A696100EEADE6 /* ViewModel */,
-				700A62EE205E8C1200AFDD18 /* CreatClassController.swift */,
-				70F5B643206A671700EEADE6 /* ClassViewController.swift */,
-				70F5B653206A6CFB00EEADE6 /* ClassStudentCell.swift */,
-				70C10FC72070F2FD00E0F289 /* AddStudentController.swift */,
-				709DF565207F988400D3C522 /* CallTheRollManager.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -685,6 +737,10 @@
 			children = (
 				708043102078A68C005F7675 /* ClassManager.swift */,
 				70863DAC2068C1200019CF27 /* ClassTimeManager.swift */,
+				709DF565207F988400D3C522 /* CallTheRollManager.swift */,
+				50D93B484A0029D4F69B9F24 /* StudentManager.swift */,
+				703F26B220810A6D00AD7FB4 /* ManagerProtocol.swift */,
+				703F26B420810DE800AD7FB4 /* AttendanceManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -998,15 +1054,20 @@
 				70863E1F2068C5CD0019CF27 /* PhoneCodeCell.swift in Sources */,
 				70863E152068C5CD0019CF27 /* ContactCell.swift in Sources */,
 				70863E012068C5CD0019CF27 /* Common+Extensions.swift in Sources */,
+				709C8E1A2081D7E300AF1821 /* DetailViewController.swift in Sources */,
+				709DF568207FACE600D3C522 /* Extensions.swift in Sources */,
 				70863E082068C5CD0019CF27 /* UIColor+Extensions.swift in Sources */,
 				70863E122068C5CD0019CF27 /* ContactsPickerViewController.swift in Sources */,
 				70863E172068C5CD0019CF27 /* ImagePickerViewController.swift in Sources */,
 				7053F1E420613EA400CDB402 /* TextFiledView.swift in Sources */,
 				70D785BF2057EF99002483F1 /* MainViewController.swift in Sources */,
+				709C8E1F2081DDF400AF1821 /* AnimationCell.swift in Sources */,
 				70863E0D2068C5CD0019CF27 /* UITextField+Extensions.swift in Sources */,
+				709C8E212081E39500AF1821 /* AttendanceRecordCell.swift in Sources */,
 				70863E1C2068C5CD0019CF27 /* LocaleInfo.swift in Sources */,
 				70863E022068C5CD0019CF27 /* Date+Extension.swift in Sources */,
 				70D8F29720593C3E0059A24E /* Constans.swift in Sources */,
+				703F26B320810A6D00AD7FB4 /* ManagerProtocol.swift in Sources */,
 				70863E242068C5CD0019CF27 /* Location.swift in Sources */,
 				70C10FC82070F2FD00E0F289 /* AddStudentController.swift in Sources */,
 				70863E2D2068C5CD0019CF27 /* TwoTextFieldsViewController.swift in Sources */,
@@ -1056,6 +1117,7 @@
 				70863E0A2068C5CD0019CF27 /* UIImageView+Extensions.swift in Sources */,
 				708043112078A68C005F7675 /* ClassManager.swift in Sources */,
 				70863E052068C5CD0019CF27 /* String+Extensions.swift in Sources */,
+				703F26B520810DE800AD7FB4 /* AttendanceManager.swift in Sources */,
 				70863E042068C5CD0019CF27 /* Optional+Extensions.swift in Sources */,
 				70863E092068C5CD0019CF27 /* UIImage+Extensions.swift in Sources */,
 				70863E162068C5CD0019CF27 /* DatePickerViewController.swift in Sources */,
@@ -1065,7 +1127,9 @@
 				70863E132068C5CD0019CF27 /* Contacts.swift in Sources */,
 				70D785C52057EFDF002483F1 /* HomeViewController.swift in Sources */,
 				70AF2E91207B46C700A58F3A /* MyClassCell.swift in Sources */,
+				709C8E1C2081DBBC00AF1821 /* CellAnimation.swift in Sources */,
 				70863E322068C5CD0019CF27 /* Label.swift in Sources */,
+				50D93EAAF56536756D632C9A /* StudentManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

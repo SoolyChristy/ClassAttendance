@@ -64,9 +64,9 @@ struct Class: TableCodable {
     var lesson: String
     var icon: String
     var dates: [ClassDate]
-    var students: [Student]
+    var students: [ID]
     
-    init(name: String, lesson: String, icon: String, dates: [ClassDate], students: [Student]) {
+    init(name: String, lesson: String, icon: String, dates: [ClassDate], students: [ID]) {
         self.id = name + lesson
         self.userId = AccountManager.shared.currentUser()?.identifier ?? 0
         self.name = name
@@ -100,8 +100,16 @@ struct Student: TableCodable {
     var id: ID
     var phone: Int
     var icon: String
-    var sex: Sex
-    
+    var sex: String
+
+    init(name: String, id: ID, phone: Int, icon: String = "ic_boy", sex: String) {
+        self.name = name
+        self.id = id
+        self.phone = phone
+        self.icon = icon
+        self.sex = sex
+    }
+
     enum CodingKeys: String, CodingTableKey {
         typealias Root = Student
         static let objectRelationalMapping = TableBinding(CodingKeys.self)
@@ -111,6 +119,10 @@ struct Student: TableCodable {
         case phone
         case icon
         case sex
+
+        static var columnConstraintBindings: [CodingKeys: ColumnConstraintBinding]? {
+            return [id: ColumnConstraintBinding(isPrimary: true)]
+        }
     }
 }
 
@@ -130,16 +142,31 @@ struct AttendanceDetail: TableCodable {
 /// 考勤表
 struct AttendanceRecord: TableCodable {
     var classId: String
+    var className: String
+    var lessonName: String
     var date: Date
     var info: String
-    var late: [Student]
-    var leave: [Student]
-    var absenteeism: [Student]
+    var late: [ID]
+    var leave: [ID]
+    var absenteeism: [ID]
+    
+    init(aClass: Class, date: Date, info: String, late: [ID], leave: [ID], absenteeism: [ID]) {
+        self.classId = aClass.id
+        self.className = aClass.name
+        self.lessonName = aClass.lesson
+        self.date = date
+        self.info = info
+        self.late = late
+        self.leave = leave
+        self.absenteeism = absenteeism
+    }
     
     enum CodingKeys: String, CodingTableKey {
         typealias Root = AttendanceRecord
         static let objectRelationalMapping = TableBinding(CodingKeys.self)
         case classId
+        case className
+        case lessonName
         case date
         case info
         case late
@@ -148,9 +175,16 @@ struct AttendanceRecord: TableCodable {
     }
 }
 
-public enum Sex: String, Codable {
+enum Sex: String, TableCodable {
     case male = "男"
     case female = "女"
+    
+    enum CodingKeys: String, CodingTableKey {
+        typealias Root = Sex
+        static let objectRelationalMapping = TableBinding(CodingKeys.self)
+        case male
+        case female
+    }
 }
 
 public enum AttendanceType: Int {

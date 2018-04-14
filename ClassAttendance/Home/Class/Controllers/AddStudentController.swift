@@ -10,7 +10,7 @@ import UIKit
 
 class AddStudentController: BaseViewController {
 
-    init(compeletionHandler: @escaping (Student) -> ()) {
+    init(compeletionHandler: @escaping (ID) -> ()) {
         super.init(nibName: nil, bundle: nil)
         self.compeletionHandler = compeletionHandler
     }
@@ -92,7 +92,7 @@ class AddStudentController: BaseViewController {
         
     }
     
-    private var compeletionHandler: (Student) -> () = {_ in }
+    private var compeletionHandler: (ID) -> () = {_ in }
     private var sex: Sex?
     private let nameFiled = TextFiledView.textFiledView()
     private let idFiled = TextFiledView.textFiledView()
@@ -132,9 +132,16 @@ extension AddStudentController {
             return
         }
         let icon = sex == .male ? "ic_boy" : "ic_girl"
-        let student = Student(name: name, id: id, phone: phone, icon: icon, sex: sex)
-        compeletionHandler(student)
-        navigationController?.popViewController(animated: true)
+        let student = Student(name: name, id: id, phone: phone, icon: icon, sex: sex.rawValue)
+        StudentManager.shared.creat(student: student) { result in
+            switch result {
+            case .success:
+                self.compeletionHandler(student.id)
+                self.navigationController?.popViewController(animated: true)
+            case .failure(_):
+                break
+            }
+        }
     }
     @objc private func iconBtnAction() {
         

@@ -21,6 +21,7 @@ class ClassViewController: BaseViewController {
     
     init(class: Class, style: Style) {
         self.myClass = `class`
+        self.students = StudentManager.shared.get(with: myClass.students)
         self.style = style
         super.init(nibName: nil, bundle: nil)
     }
@@ -36,6 +37,7 @@ class ClassViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        students = StudentManager.shared.get(with: myClass.students)
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     
@@ -63,6 +65,9 @@ class ClassViewController: BaseViewController {
         headerView.addSubview(backImageView)
 
         let iconView = UIImageView()
+        iconView.isUserInteractionEnabled = true
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressAction))
+        iconView.addGestureRecognizer(longPress)
         iconView.image = UIImage(named: myClass.icon)
         headerView.addSubview(iconView)
         iconView.snp.makeConstraints { (make) in
@@ -127,13 +132,20 @@ class ClassViewController: BaseViewController {
     
     private let style: Style
     private var myClass: Class
+    private var students: [Student]
     private var attendance = [AttendanceType]()
-    private lazy var callTheRollMgr: CallTheRollManager = CallTheRollManager(studentCount: myClass.students.count)
+    private lazy var callTheRollMgr: CallTheRollManager = CallTheRollManager(target: self, aClass: myClass)
     private let tableView = UITableView()
 }
 
 extension ClassViewController {
-    
+
+    @objc private func longPressAction() {
+        myClass.students += StudentManager.shared.makeStudents()
+        students = StudentManager.shared.get(with: myClass.students)
+        tableView.reloadData()
+    }
+
     @objc private func doneBtnAction() {
         switch style {
         case .normal:
@@ -165,8 +177,8 @@ extension ClassViewController {
     }
     
     @objc private func addBtnAction() {
-        let addStudentVc = AddStudentController { (student) in
-            self.myClass.students.append(student)
+        let addStudentVc = AddStudentController { (studentId) in
+            self.myClass.students.append(studentId)
             self.tableView.reloadData()
         }
         navigationController?.pushViewController(addStudentVc, animated: true)
@@ -181,7 +193,7 @@ extension ClassViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: kReuseId, for: indexPath) as! ClassStudentCell
         cell.delegate = callTheRollMgr
-        cell.update(model: myClass.students[indexPath.row],
+        cell.update(model: students[indexPath.row],
                     style: style,
                     attendanceType: style == .callTheRoll ? callTheRollMgr.attendanceTags[indexPath.row] : nil,
                     indexPath: indexPath)
@@ -205,7 +217,12 @@ extension ClassViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        myClass.students.remove(at: indexPath.row)
+        students.remove(at: indexPath.row)
+        let cell = tableView.cellForRow(at: indexPath) as! ClassStudentCell
+        if let id = cell.student?.id,
+            let index = myClass.students.index(of: id) {
+            myClass.students.remove(at: index)
+        }
         tableView.deleteRows(at: [indexPath], with: .left)
     }
 

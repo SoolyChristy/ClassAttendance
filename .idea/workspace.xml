@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1f3cde60-e48d-4b37-810d-5fb33d1e972c" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/ClassAttendance/Helpers/Extensions.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassAttendance.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ClassAttendance.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassAttendance.xcworkspace/xcuserdata/soolychristina.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/ClassAttendance.xcworkspace/xcuserdata/soolychristina.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassAttendance/DataBase/DatabaseManager.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ClassAttendance/DataBase/DatabaseManager.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassAttendance/DataBase/UserModel.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ClassAttendance/DataBase/UserModel.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassAttendance/Home/Class/AddStudentController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ClassAttendance/Home/Class/Controllers/AddStudentController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassAttendance/Home/Class/CallTheRollManager.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ClassAttendance/Home/Class/ViewModel/CallTheRollManager.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassAttendance/Home/Class/ClassStudentCell.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ClassAttendance/Home/Class/Views/ClassStudentCell.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassAttendance/Home/Class/ClassViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ClassAttendance/Home/Class/Controllers/ClassViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassAttendance/Home/Class/CreatClassController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ClassAttendance/Home/Class/Controllers/CreatClassController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassAttendance/Home/MyClassCell.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ClassAttendance/Home/Class/Views/MyClassCell.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassAttendance/Home/TextFiledView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ClassAttendance/Home/Class/Views/TextFiledView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassAttendance/Home/TextFiledView.xib" beforeDir="false" afterPath="$PROJECT_DIR$/ClassAttendance/Home/Class/Views/TextFiledView.xib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/soolychristina.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/soolychristina.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
+    </list>
+    <ignored path="$USER_HOME$/Library/Developer/Xcode/DerivedData/ClassAttendance-fjngzdxqzognbwdjpkdmcstosvwf/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_E145E18F-1B3C-497C-BAC4-C3822E45DAA7" />
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="HomeViewController.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ClassAttendance/Home/HomeViewController.swift">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="CallTheRollManager.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ClassAttendance/Home/Class/ViewModel/CallTheRollManager.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserModel.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ClassAttendance/DataBase/UserModel.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1372">
+              <caret line="97" column="20" lean-forward="true" selection-start-line="97" selection-start-column="20" selection-end-line="97" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddStudentController.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ClassAttendance/Home/Class/Controllers/AddStudentController.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="251">
+              <caret line="140" column="31" selection-start-line="140" selection-start-column="31" selection-end-line="140" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClassViewController.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ClassAttendance/Home/Class/Controllers/ClassViewController.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="369">
+              <caret line="43" column="37" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseManager.swift" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ClassAttendance/DataBase/DatabaseManager.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="206" column="23" selection-start-line="206" selection-start-column="23" selection-end-line="206" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClassManager.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ClassAttendance/Home/Class/ViewModel/ClassManager.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="511">
+              <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StudentManager.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ClassAttendance/Home/Class/ViewModel/StudentManager.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Extensions.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ClassAttendance/Helpers/Extensions.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/ClassAttendance/Home/Class/ViewModel/ClassManager.swift" />
+        <option value="$PROJECT_DIR$/ClassAttendance/DataBase/UserModel.swift" />
+        <option value="$PROJECT_DIR$/ClassAttendance/Home/Class/ViewModel/StudentManager.swift" />
+        <option value="$PROJECT_DIR$/ClassAttendance/Home/Class/Controllers/AddStudentController.swift" />
+        <option value="$PROJECT_DIR$/ClassAttendance/DataBase/DatabaseManager.swift" />
+        <option value="$PROJECT_DIR$/ClassAttendance/Home/Class/Controllers/ClassViewController.swift" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-15" />
+    <option name="y" value="22" />
+    <option name="width" value="1920" />
+    <option name="height" value="978" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="ClassAttendance" type="1d218c8b:XcodeProjectNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="ClassAttendance" type="1d218c8b:XcodeProjectNode" />
+              <item name="ClassAttendance" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="ClassAttendance" type="1d218c8b:XcodeProjectNode" />
+              <item name="ClassAttendance" type="fcab9f18:XcodeViewNode" />
+              <item name="DataBase" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="ClassAttendance" type="1d218c8b:XcodeProjectNode" />
+              <item name="ClassAttendance" type="fcab9f18:XcodeViewNode" />
+              <item name="Home" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="ClassAttendance" type="1d218c8b:XcodeProjectNode" />
+              <item name="ClassAttendance" type="fcab9f18:XcodeViewNode" />
+              <item name="Home" type="fcab9f18:XcodeViewNode" />
+              <item name="Class" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="ClassAttendance" type="1d218c8b:XcodeProjectNode" />
+              <item name="ClassAttendance" type="fcab9f18:XcodeViewNode" />
+              <item name="Home" type="fcab9f18:XcodeViewNode" />
+              <item name="Class" type="fcab9f18:XcodeViewNode" />
+              <item name="Controllers" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="ClassAttendance" type="1d218c8b:XcodeProjectNode" />
+              <item name="ClassAttendance" type="fcab9f18:XcodeViewNode" />
+              <item name="Home" type="fcab9f18:XcodeViewNode" />
+              <item name="Class" type="fcab9f18:XcodeViewNode" />
+              <item name="ViewModel" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="ClassAttendance" type="1d218c8b:XcodeProjectNode" />
+              <item name="ClassAttendance" type="fcab9f18:XcodeViewNode" />
+              <item name="Home" type="fcab9f18:XcodeViewNode" />
+              <item name="Class" type="fcab9f18:XcodeViewNode" />
+              <item name="Views" type="fcab9f18:XcodeViewNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Cidr.FilesView" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="OBJC.PRESERVED_TARGET_SELECTION" value="ClassAttendance" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ClassAttendance.xcworkspace" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="ClassAttendance" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ClassAttendance" TARGET_NAME="ClassAttendance" CONFIG_NAME="Debug" SCHEME_NAME="ClassAttendance" IS_LOCATION_SIMULATION_ALLOWED="true" RUN_TARGET_PROJECT_NAME="ClassAttendance" RUN_TARGET_NAME="ClassAttendance" MAKE_ACTIVE="TRUE">
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1f3cde60-e48d-4b37-810d-5fb33d1e972c" name="Default" comment="" />
+      <created>1523623016679</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1523623016679</updated>
+      <workItem from="1523623020807" duration="3577000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3577000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="22" width="1920" height="978" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Designer" order="1" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.18229167" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Messages" order="3" weight="0.32964602" />
+      <window_info anchor="right" id="Palette&#9;" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.19579646" />
+      <window_info anchor="bottom" id="Version Control" order="2" />
+      <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="0" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/ClassAttendance/DataBase/DatabaseManager.swift</url>
+          <line>207</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ClassAttendance/Home/HomeViewController.swift">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClassAttendance/Helpers/Extensions.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClassAttendance/Home/Class/ViewModel/CallTheRollManager.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClassAttendance/Home/Class/ViewModel/ClassTimeManager.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="33" column="4" lean-forward="true" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClassAttendance/Home/Class/ViewModel/ClassManager.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClassAttendance/Home/Class/ViewModel/StudentManager.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClassAttendance/Home/Class/Controllers/AddStudentController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="140" column="31" selection-start-line="140" selection-start-column="31" selection-end-line="140" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClassAttendance/Home/Class/Controllers/ClassViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="43" column="37" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClassAttendance/DataBase/UserModel.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1372">
+          <caret line="97" column="20" lean-forward="true" selection-start-line="97" selection-start-column="20" selection-end-line="97" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClassAttendance/DataBase/DatabaseManager.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="206" column="23" selection-start-line="206" selection-start-column="23" selection-end-line="206" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

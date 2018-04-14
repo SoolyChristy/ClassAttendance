@@ -12,7 +12,8 @@ import WCDBSwift
 private let kDataBasePath = kDocumentsPath + "/dataBase.db"
 private let kUserTableName = "User"
 private let kLessonTableName = "Lesson"
-private let kClassTabelName = "Class"
+private let kClassTableName = "Class"
+private let kStudentTableName = "Student"
 private let kAttendanceRecordName = "AttendanceRecord"
 
 public enum DBError {
@@ -83,13 +84,22 @@ extension DatabaseManager {
         }
     }
     
-    public func creatLesson(id: Int, name: String, compeletionHandler: Handler<Swift.Error>?) {
-        let lesson = Lesson(name: name, id: id)
-        insert(objects: [lesson], intoTable: kLessonTableName, handler: compeletionHandler)
+    public func creatStudent(students: [Student], compeletionHandler: @escaping Handler<DBError>) {
+        insert(objects: students, intoTable: kStudentTableName) { result in
+            switch result {
+                case .success:
+                    printLog("创建学生成功！ -\(students)")
+                    compeletionHandler(.success)
+                case .failure(let error):
+                    printLog("创建学生失败！ - \(error)")
+                    let dbError: DBError = .unknown
+                    compeletionHandler(.failure(dbError))
+            }
+         }
     }
     
     public func creatClass(aClass: Class, compeletionHandler: @escaping Handler<DBError.ClassError>) {
-        insert(objects: [aClass], intoTable: kClassTabelName) { (result) in
+        insert(objects: [aClass], intoTable: kClassTableName) { (result) in
             switch result {
             case .success:
                 printLog("创建课堂成功 - \(aClass)")
@@ -102,6 +112,20 @@ extension DatabaseManager {
                         dbError = .idRepeat
                     }
                 }
+                compeletionHandler(.failure(dbError))
+            }
+        }
+    }
+    
+    public func createAttendanceRecord(record: AttendanceRecord, compeletionHandler: @escaping Handler<DBError>) {
+        insert(objects: [record], intoTable: kAttendanceRecordName) { (result) in
+            switch result {
+            case .success:
+                printLog("创建考勤表成功 - \(record)")
+                compeletionHandler(.success)
+            case .failure(let error):
+                printLog("创建考勤表失败 - \(error)")
+                let dbError: DBError = .unknown
                 compeletionHandler(.failure(dbError))
             }
         }
@@ -140,6 +164,21 @@ extension DatabaseManager {
 
 // MARK: 查找
 extension DatabaseManager {
+
+    public func getObject<Object: TableCodable>(where condition: WCDBSwift.Condition?) -> Object? {
+        guard let tableName = getTabel(Object: Object.self) else {
+            printLog("查找失败 - Object不合法")
+            return nil
+        }
+        do {
+            let object: Object? = try dataBase.getObject(fromTable: tableName, where: condition)
+            return object
+        } catch let error {
+            printLog("查找失败 - \(error)")
+            return nil
+        }
+    }
+    
     public func getObjects<Object: TableCodable>(where condition: WCDBSwift.Condition?, orderBy: [OrderBy]?) -> [Object]? {
         guard let tableName = getTabel(Object: Object.self) else {
             printLog("查找失败 - Object不合法")
@@ -196,10 +235,11 @@ extension DatabaseManager {
 
     private func creatTables() {
         do {
+            try dataBase.create(table: kStudentTableName, of: Student.self)
             try dataBase.create(table: kUserTableName, of: User.self)
             try dataBase.create(table: kLessonTableName, of: Lesson.self)
             try dataBase.create(table: kAttendanceRecordName, of: AttendanceRecord.self)
-            try dataBase.create(table: kClassTabelName, of: Class.self)
+            try dataBase.create(table: kClassTableName, of: Class.self)
         } catch let error {
             printLog("创建表失败 - \(error)")
         }
@@ -208,11 +248,13 @@ extension DatabaseManager {
     private func getTabel<Object: TableEncodable>(Object: Object.Type) -> String? {
         var table: String?
         if Object.self == Class.self {
-            table = kClassTabelName
+            table = kClassTableName
         } else if Object.self == User.self {
             table = kUserTableName
         } else if Object.self == AttendanceRecord.self {
             table = kAttendanceRecordName
+        } else if Object.self == Student.self {
+            table = kStudentTableName
         }
         return table
     }

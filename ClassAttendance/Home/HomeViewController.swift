@@ -38,8 +38,10 @@ class HomeViewController: BaseViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        classes = ClassManager.shared.getMyClasses()
-        tableView.reloadData()
+        if let c = ClassManager.shared.getAll() {
+            classes = c
+            tableView.reloadData()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -67,7 +69,7 @@ class HomeViewController: BaseViewController {
     }
     
     private let tableView = UITableView()
-    private var classes: [Class] = ClassManager.shared.getMyClasses()
+    private var classes = [Class]()
 }
 
 extension HomeViewController {

@@ -18,7 +18,7 @@ class MainViewController: UITabBarController {
     private func addChildControllers() {
         let home = NavViewController(rootViewController: HomeViewController())
         home.tabBarItem = UITabBarItem(title: "首页", image: nil, selectedImage: nil)
-        let overview = NavViewController(rootViewController: BaseViewController())
+        let overview = NavViewController(rootViewController: DetailViewController())
         overview.tabBarItem = UITabBarItem(title: "一览", image: nil, selectedImage: nil)
         addChildViewController(home)
         addChildViewController(overview)

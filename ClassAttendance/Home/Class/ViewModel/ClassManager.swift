@@ -25,13 +25,12 @@ final class ClassManager {
         }
     }
     
-    public func getMyClasses() -> [Class] {
-        guard let user = AccountManager.shared.currentUser() else {
-            return [Class]()
+    public func getAll() -> [Class]? {
+        guard let user = AccountManager.shared.currentUser(),
+            let classes: [Class] = DatabaseManager.shared.getObjects(where: Class.Properties.userId == user.identifier, orderBy: nil) else {
+            return nil
         }
-        let classes: [Class]? = DatabaseManager.shared.getObjects(where: Class.Properties.userId == user.identifier, orderBy: nil)
-
-        return classes ?? [Class]()
+        return classes
     }
     
     public func update(_ aClass: Class, compeletionHandler: @escaping Handler<DBError>) {

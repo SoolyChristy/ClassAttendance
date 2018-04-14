@@ -27,6 +27,10 @@ public func rgbColor(_ color: Int64) -> UIColor {
                  alpha: CGFloat((color & 0xff000000) >> 24) / 255.0)
 }
 
+public func randomColor() -> UIColor {
+    return rgbColor(colors.randomItem ?? 0xffFEA47F)
+}
+
 public func printLog<T>(_ message: T,
                         file: String = #file,
                         method: String = #function,
@@ -55,3 +59,4 @@ public func isX() -> Bool {
 }
 
 private let kScale = UIScreen.main.bounds.width / 375.0
+private let colors: [Int64] = [0xffFEA47F, 0xff25CCF7, 0xffEAB543, 0xff58B19F, 0xff82589F, 0xff6D214F, 0xffBDC581, 0xffee5253, 0xfff368e0, 0xff48dbfb, 0xff576574, 0xfff8a5c2, 0xffc44569, 0xff303952, 0xfffff200, 0xff3d3d3d, 0xff3ae374]

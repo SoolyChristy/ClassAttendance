@@ -7,15 +7,20 @@
 //
 
 import Foundation
+import UIKit
 
 class CallTheRollManager: NSObject {
     public var attendanceTags: [AttendanceType] = []
     public var lateList = [ID]()
     public var leaveList = [ID]()
     public var absenteeismList = [ID]()
+    private let aClass: Class
+    private weak var vc: UIViewController?
     
-    init(studentCount: Int) {
-        for _ in 0..<studentCount {
+    init(target: UIViewController, aClass: Class) {
+        self.aClass = aClass
+        self.vc = target
+        for _ in 0..<aClass.students.count {
             attendanceTags.append(.none)
         }
     }
@@ -30,6 +35,15 @@ class CallTheRollManager: NSObject {
         }
         _ = absenteeismList.map {
             printLog("缺课 - \($0)")
+        }
+        let record = AttendanceRecord(aClass: aClass, date: Date(), info: "", late: lateList, leave: leaveList, absenteeism: absenteeismList)
+        AttendanceManager.shared.create(record) { (result) in
+            switch result {
+            case .success:
+                keyWindow?.makeToast("成功提交考勤表")
+            case .failure(_):
+                keyWindow?.makeToast("提交考勤表失败")
+            }
         }
     }
 }
