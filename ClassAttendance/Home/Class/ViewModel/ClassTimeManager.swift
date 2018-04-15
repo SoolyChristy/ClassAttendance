@@ -16,23 +16,18 @@ final class ClassTimeManager {
         var date: String
     }
     
-    typealias Compeletion = (_ date: ClassDate) -> ()
-    private let weeks = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+    typealias Compeletion = (_ date: Class.ClassDate) -> ()
     
     /// return (week, date)
-    public func classDateToString(classDate: ClassDate) -> ClassTime {
+    public func classDateToString(classDate: Class.ClassDate) -> ClassTime {
         var weekString = ""
         var dateString = ""
-        for (week, date) in classDate {
-            if week <= weeks.count {
-                weekString = weeks[week - 1]
-            }
-            dateString = dateFormate.string(from: date)
-        }
+        weekString = weeks[classDate.week - 1]
+        dateString = dateFormate.string(from: classDate.date)
         return ClassTime(week: weekString, date: dateString)
     }
     
-    public func classDatesToString(classDates: [ClassDate]) -> String {
+    public func classDatesToString(classDates: [Class.ClassDate]) -> String {
         var str = ""
         for classDate in classDates {
             let classTime = classDateToString(classDate: classDate)
@@ -45,7 +40,7 @@ final class ClassTimeManager {
         return str
     }
     
-    public func showClassTimePicker(defaultClassDate: ClassDate? = nil, compeletion: @escaping Compeletion) {
+    public func showClassTimePicker(defaultClassDate: Class.ClassDate? = nil, compeletion: @escaping Compeletion) {
         handler = compeletion
         self.defaultClassDate = defaultClassDate
         showWeekPicker()
@@ -61,7 +56,7 @@ final class ClassTimeManager {
     
     private var selectedWeek: String?
     private var selectedDate: Date?
-    private var defaultClassDate: ClassDate?
+    private var defaultClassDate: Class.ClassDate?
     private lazy var dateFormate: DateFormatter = {
        let df = DateFormatter()
         df.dateFormat = "HH:mm"
@@ -72,12 +67,10 @@ final class ClassTimeManager {
         let alert = UIAlertController(title: "", message: "请选择上课时间", preferredStyle: .actionSheet)
         var index: PickerViewViewController.Index?
         if let classDate = defaultClassDate {
-            for (week, _) in classDate {
-                index = (0, week - 1)
-            }
+            index = (0, classDate.week - 1)
         }
         alert.addPickerView(values: [weeks], initialSelection: index, action: { [weak self] (_, _, index, _) in
-            self?.selectedWeek = self?.weeks[index.row]
+            self?.selectedWeek = weeks[index.row]
             self?.timeAlert.title = self?.selectedWeek
         })
         alert.addAction(title: "下一步", style: .default) { [weak self] ( _) in
@@ -92,9 +85,7 @@ final class ClassTimeManager {
         let alert = UIAlertController(title: selectedWeek, message: "请选择课堂开始时间", preferredStyle: .actionSheet)
         var defaultDate: Date?
         if let classDate = defaultClassDate {
-            for (_, date) in classDate {
-                defaultDate = date
-            }
+            defaultDate = classDate.date
         }
         alert.addDatePicker(mode: .time, date: defaultDate) { [weak self] (date) in
             self?.selectedDate = date
@@ -116,27 +107,25 @@ final class ClassTimeManager {
 }
 
 extension ClassTimeManager {
-    private func classDate() -> ClassDate {
-        
+    private func classDate() -> Class.ClassDate {
+
         if let classDate = defaultClassDate,
             selectedWeek == nil {
-            for week in classDate.keys {
-                return [week: selectedDate ?? Date()]
-            }
+            return Class.ClassDate(week: classDate.week, date: Date())
         }
         if selectedWeek == nil {
             selectedWeek = "周一"
         }
-        
+
         guard let selectedWeek = selectedWeek,
             let date = selectedDate else {
-                return [:]
+                return Class.ClassDate(week: 1, date: Date())
         }
         for (i, week) in weeks.enumerated() {
             if week == selectedWeek {
-                return [i + 1 : date]
+                return Class.ClassDate(week: i + 1, date: date)
             }
         }
-        return [1: date]
+        return Class.ClassDate(week: 1, date: date)
     }
 }

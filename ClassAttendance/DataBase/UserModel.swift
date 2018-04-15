@@ -9,7 +9,6 @@
 import Foundation
 import WCDBSwift
 
-public typealias ClassDate = [Int: Date]
 public typealias ID = Int
 
 /// 用户
@@ -58,6 +57,17 @@ struct Lesson: TableCodable {
 
 /// 班级
 struct Class: TableCodable {
+    
+    struct ClassDate: TableCodable {
+        var week: Int
+        var date: Date
+        enum CodingKeys: String, CodingTableKey {
+            typealias Root = ClassDate
+            static let objectRelationalMapping = TableBinding(CodingKeys.self)
+            case week
+            case date
+        }
+    }
     var id: String
     var userId: ID
     var name: String
@@ -65,6 +75,9 @@ struct Class: TableCodable {
     var icon: String
     var dates: [ClassDate]
     var students: [ID]
+    var lateCount: Int
+    var leaveCount: Int
+    var absenteeismCount: Int
     
     init(name: String, lesson: String, icon: String, dates: [ClassDate], students: [ID]) {
         self.id = name + lesson
@@ -74,6 +87,9 @@ struct Class: TableCodable {
         self.icon = icon
         self.dates = dates
         self.students = students
+        self.lateCount = 0
+        self.leaveCount = 0
+        self.absenteeismCount = 0
     }
     
     enum CodingKeys: String, CodingTableKey {
@@ -86,6 +102,9 @@ struct Class: TableCodable {
         case icon
         case students
         case lesson
+        case lateCount
+        case leaveCount
+        case absenteeismCount
         
         static var columnConstraintBindings: [CodingKeys: ColumnConstraintBinding]? {
             return [id: ColumnConstraintBinding(isPrimary: true)]

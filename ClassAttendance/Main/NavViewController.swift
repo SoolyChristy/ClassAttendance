@@ -33,6 +33,11 @@ class NavViewController: UINavigationController {
         return super.popViewController(animated: animated)
     }
     
+    override func popToRootViewController(animated: Bool) -> [UIViewController]? {
+        tabBarController?.tabBar.isHidden = false
+        return super.popToRootViewController(animated: animated)
+    }
+    
     // 隐藏tabBar
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         super.pushViewController(viewController, animated: animated)

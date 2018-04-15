@@ -17,3 +17,5 @@ let kNavHeight: CGFloat = isX() ? 88 : 64
 
 let kTextFieldMargin = scale(iPhone8Design: 28)
 let kCustomButtonMargin = scale(iPhone8Design: 48)
+
+let weeks = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]

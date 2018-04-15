@@ -80,7 +80,7 @@ class CreatClassController: BaseViewController {
     fileprivate let lessonFiled = TextFiledView.textFiledView()
     fileprivate let nextBtn = UIButton.customButton(title: "下一步")
     private let tableView = UITableView()
-    private var dates = [ClassDate]()
+    private var dates = [Class.ClassDate]()
     private let classTimeMgr = ClassTimeManager()
 }
 

@@ -173,6 +173,7 @@ extension ClassViewController {
             })
         case .callTheRoll:
             callTheRollMgr.finishCall()
+            navigationController?.popToRootViewController(animated: true)
         }
     }
     
@@ -226,8 +227,14 @@ extension ClassViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deleteRows(at: [indexPath], with: .left)
     }
 
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        navigationController?.setNavigationBarHidden(velocity.y > 0, animated: true)
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let y = scrollView.contentOffset.y
+        if y > kHeaderHeight - kNavHeight {
+            navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        } else {
+            navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            navigationController?.navigationBar.shadowImage = UIImage()
+        }
     }
     
 }

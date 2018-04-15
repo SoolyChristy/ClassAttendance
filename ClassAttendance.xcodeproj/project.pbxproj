@@ -736,11 +736,11 @@
 			isa = PBXGroup;
 			children = (
 				708043102078A68C005F7675 /* ClassManager.swift */,
+				703F26B420810DE800AD7FB4 /* AttendanceManager.swift */,
 				70863DAC2068C1200019CF27 /* ClassTimeManager.swift */,
 				709DF565207F988400D3C522 /* CallTheRollManager.swift */,
 				50D93B484A0029D4F69B9F24 /* StudentManager.swift */,
 				703F26B220810A6D00AD7FB4 /* ManagerProtocol.swift */,
-				703F26B420810DE800AD7FB4 /* AttendanceManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

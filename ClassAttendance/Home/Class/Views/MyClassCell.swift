@@ -12,13 +12,29 @@ private let kHeight = scale(iPhone8Design: 40)
 
 class MyClassCell: AnimationCell {
 
-    public func update(model: Class, target: UIViewController) {
+    enum Style {
+        case today
+        case normal
+    }
+    
+    public func update(model: Class, target: UIViewController, style: Style) {
         aClass = model
         vc = target
         nameLabel.text = model.name
         iconView.image = UIImage(named: model.icon)
         lessonLabel.text = model.lesson
-        
+        lateView.countLabel.text = "\(model.lateCount)"
+        absenteeismView.countLabel.text = "\(model.absenteeismCount)"
+        leaveView.countLabel.text = "\(model.leaveCount)"
+        if style == .today {
+            for classDate in model.dates {
+                if classDate.week == getWeekDay() {
+                    timeLabel.text = "上课时间：" + ClassTimeManager().classDateToString(classDate: classDate).date
+                }
+            }
+        } else {
+            timeLabel.text = ""
+        }
     }
     
     override func setupUI() {
@@ -44,6 +60,15 @@ class MyClassCell: AnimationCell {
         nameLabel.snp.makeConstraints { (make) in
             make.left.equalTo(iconView.snp.right).offset(scale(iPhone8Design: 12))
             make.top.equalTo(iconView)
+        }
+        
+        timeLabel.text = ""
+//        timeLabel.textColor = .darkGray
+        timeLabel.font = UIFont.systemFont(ofSize: scale(iPhone8Design: 13), weight: .light)
+        container.addSubview(timeLabel)
+        timeLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(nameLabel.snp.right).offset(scale(iPhone8Design: 8))
+            make.centerY.equalTo(nameLabel)
         }
         
         lessonLabel.text = "编译原理"

@@ -23,6 +23,7 @@ class AttendanceRecordCell: AnimationCell {
     
     override func setupUI() {
         super.setupUI()
+        
 //        container.backgroundColor = randomColor()
         dateLabel.textColor = .darkGray
         dateLabel.text = "2018年5月12日 11:30"

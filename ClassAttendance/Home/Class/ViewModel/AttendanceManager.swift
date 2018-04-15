@@ -15,7 +15,7 @@ class AttendanceManager: ManagerProtocol {
     private init () {}
     
     func getAll() -> [AttendanceRecord]? {
-        guard let records: [AttendanceRecord] = DatabaseManager.shared.getObjects(where: nil, orderBy: nil) else {
+        guard let records: [AttendanceRecord] = DatabaseManager.shared.getObjects(where: nil, orderBy: [AttendanceRecord.Properties.date.asOrder(by: .descending)]) else {
             printLog("查找所有考勤表失败")
             return nil
         }
@@ -23,23 +23,21 @@ class AttendanceManager: ManagerProtocol {
         return records
     }
     
-    func get(with ID: IDType) -> AttendanceRecord? {
-        guard let record: AttendanceRecord = DatabaseManager.shared.getObject(where: AttendanceRecord.Properties.classId == ID) else {
-            printLog("查找考勤表失败")
+    func getRecords(with classId: ClassID) -> [AttendanceRecord]? {
+        guard let records: [AttendanceRecord] = DatabaseManager.shared.getObjects(where: AttendanceRecord.Properties.classId == classId, orderBy: nil) else {
+            printLog("没有找到符合要求的考勤表")
             return nil
         }
-        printLog("查找考勤表成功！ - \(record)")
-        return record
+        printLog("查找考勤表成功 - 查到\(records.count)条结果")
+        return records
     }
 
     func get(with IDs: [IDType]) -> [AttendanceRecord] {
-        var records = [AttendanceRecord]()
-        for id in IDs {
-            if let record = get(with: id) {
-                records.append(record)
-            }
-        }
-        return records
+        fatalError("this method can not be called")
+    }
+    
+    func get(with ID: IDType) -> AttendanceRecord? {
+        fatalError("this method can not be called")
     }
 
     func create(_ model: AttendanceRecord, compeletionHandler: @escaping (Result<DBError>) -> ()) {
@@ -56,6 +54,31 @@ class AttendanceManager: ManagerProtocol {
 
     typealias Model = AttendanceRecord
     typealias IDType = String
+    typealias ClassID = String
 
+}
+
+extension AttendanceManager {
+
+    struct AttendanceCount {
+        let lateCount: Int
+        let leaveCount: Int
+        let absenteeismCount: Int
+    }
+
+    public func getAttendanceCount(with classID: ClassID) -> AttendanceCount {
+        guard let records = getRecords(with: classID) else {
+            return AttendanceCount(lateCount: 0, leaveCount: 0, absenteeismCount: 0)
+        }
+        var lateCount = 0
+        var leaveCount = 0
+        var absenteeismCount = 0
+        for record in records {
+            lateCount += record.late.count
+            leaveCount += record.leave.count
+            absenteeismCount += record.absenteeism.count
+        }
+        return AttendanceCount(lateCount: lateCount, leaveCount: leaveCount, absenteeismCount: absenteeismCount)
+    }
 }
 

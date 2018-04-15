@@ -28,9 +28,34 @@ final class ClassManager {
     public func getAll() -> [Class]? {
         guard let user = AccountManager.shared.currentUser(),
             let classes: [Class] = DatabaseManager.shared.getObjects(where: Class.Properties.userId == user.identifier, orderBy: nil) else {
-            return nil
+                return nil
         }
-        return classes
+
+        var classList = [Class]()
+        for aClass in classes {
+            var cl = aClass
+            let count = AttendanceManager.shared.getAttendanceCount(with: cl.id)
+            cl.absenteeismCount = count.absenteeismCount
+            cl.leaveCount = count.leaveCount
+            cl.lateCount = count.lateCount
+            classList.append(cl)
+        }
+        return classList
+    }
+    
+    public func getToday(from classes: [Class]) -> [Class] {
+        var todayClasses = [Class]()
+        let weekDay = getWeekDay()
+        for aClass in classes {
+            for classDate in aClass.dates {
+                if weekDay == classDate.week {
+                    todayClasses.append(aClass)
+                    break
+                }
+            }
+        }
+        printLog("查询今天的课程 - 查到\(todayClasses.count)条结果")
+        return todayClasses
     }
     
     public func update(_ aClass: Class, compeletionHandler: @escaping Handler<DBError>) {

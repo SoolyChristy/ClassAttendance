@@ -22,7 +22,7 @@ extension CellAnimation {
     func beginAnimation() {
         let animation = CABasicAnimation(keyPath: "transform.scale")
         animation.duration = 0.25
-        animation.toValue = 0.95
+        animation.toValue = 0.9
         animation.isRemovedOnCompletion = false
         animation.fillMode = kCAFillModeForwards
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)

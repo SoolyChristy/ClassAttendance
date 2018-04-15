@@ -36,10 +36,12 @@ class HomeViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         if let c = ClassManager.shared.getAll() {
             classes = c
+            todayClasses = ClassManager.shared.getToday(from: classes)
             tableView.reloadData()
         }
     }
@@ -70,6 +72,7 @@ class HomeViewController: BaseViewController {
     
     private let tableView = UITableView()
     private var classes = [Class]()
+    private var todayClasses = [Class]()
 }
 
 extension HomeViewController {
@@ -86,7 +89,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Section(rawValue: section) ?? .max {
         case .today:
-            return 1
+            return todayClasses.count
         case .myClass:
             return classes.count
         default:
@@ -97,7 +100,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch Section(rawValue: indexPath.section) ?? .max {
         case .today:
-            return 44
+            return scale(iPhone8Design: 154)
         default:
             return scale(iPhone8Design: 154)
         }
@@ -106,11 +109,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch Section(rawValue: indexPath.section) ?? .max {
         case .today:
-            return UITableViewCell()
+            let cell = tableView.dequeueReusableCell(withIdentifier: kMyClassCellId, for: indexPath) as! MyClassCell
+            cell.update(model: todayClasses[indexPath.row], target: self, style: .today)
+            return cell
         case .myClass:
             let cell = tableView.dequeueReusableCell(withIdentifier: kMyClassCellId, for: indexPath) as! MyClassCell
-//            let aClass = Class(name: "计科1401班", lesson: "计算机网络", icon: "ic_defalut_class", dates: [ClassDate](), students: [Student]())
-            cell.update(model: classes[indexPath.row], target: self)
+            cell.update(model: classes[indexPath.row], target: self, style: .normal)
             return cell
         default:
             return UITableViewCell()
@@ -130,6 +134,15 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         }
         switch Section(rawValue: section) ?? .max {
         case .today:
+            let weekLabel = UILabel()
+            weekLabel.font = UIFont.systemFont(ofSize: scale(iPhone8Design: 15), weight: .medium)
+            view.addSubview(weekLabel)
+            weekLabel.snp.makeConstraints({ (make) in
+                make.right.equalTo(view).inset(kBigTitleMargin)
+                make.bottom.equalTo(label)
+            })
+            let week = weeks[getWeekDay() - 1]
+            weekLabel.text = week
             label.text = "今日课程"
         case .myClass:
             label.text = "我的课程"
@@ -143,7 +156,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch Section(rawValue: indexPath.section) ?? .max {
         case .today:
-            break
+            let vc = ClassViewController(class: todayClasses[indexPath.row], style: .edit)
+            navigationController?.pushViewController(vc, animated: true)
         case .myClass:
             let vc = ClassViewController(class: classes[indexPath.row], style: .edit)
             navigationController?.pushViewController(vc, animated: true)
