@@ -168,12 +168,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     // 取消tableview section header黏性
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let kHeaderHeight: CGFloat = 28
-        let y = scrollView.contentOffset.y
-        if y <= kHeaderHeight && y >= 0 {
-            scrollView.contentInset = UIEdgeInsets(top: -y, left: 0, bottom: 0, right: 0)
-        } else if y >= kHeaderHeight {
-            scrollView.contentInset = UIEdgeInsets(top: -kHeaderHeight, left: 0, bottom: 0, right: 0)
-        }
+//        let kHeaderHeight: CGFloat = 28
+//        let y = scrollView.contentOffset.y
+//        if y <= kHeaderHeight && y >= 0 {
+//            scrollView.contentInset = UIEdgeInsets(top: -y, left: 0, bottom: 0, right: 0)
+//        } else if y >= kHeaderHeight {
+//            scrollView.contentInset = UIEdgeInsets(top: -kHeaderHeight, left: 0, bottom: 0, right: 0)
+//        }
     }
 }

@@ -12,14 +12,15 @@ class MainViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBar.tintColor = mainColor
         addChildControllers()
     }
     
     private func addChildControllers() {
         let home = NavViewController(rootViewController: HomeViewController())
-        home.tabBarItem = UITabBarItem(title: "首页", image: nil, selectedImage: nil)
+        home.tabBarItem = UITabBarItem(title: "首页", image: #imageLiteral(resourceName: "tabbar_home"), selectedImage: #imageLiteral(resourceName: "tabbar_home_select"))
         let overview = NavViewController(rootViewController: DetailViewController())
-        overview.tabBarItem = UITabBarItem(title: "一览", image: nil, selectedImage: nil)
+        overview.tabBarItem = UITabBarItem(title: "一览", image: #imageLiteral(resourceName: "tabbar_overview"), selectedImage: #imageLiteral(resourceName: "tabbar_overview"))
         addChildViewController(home)
         addChildViewController(overview)
     }

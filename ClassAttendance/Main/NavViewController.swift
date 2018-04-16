@@ -14,6 +14,7 @@ class NavViewController: UINavigationController {
         super.viewDidLoad()
         navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
+        navigationBar.tintColor = mainColor
     }
     
     // 显示tabBar
