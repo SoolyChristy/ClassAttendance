@@ -58,15 +58,5 @@ public func isX() -> Bool {
     return false
 }
 
-public func getWeekDay() -> Int {
-    let calendar = Calendar(identifier: .gregorian)
-    let components = calendar.dateComponents([.weekday], from: Date())
-    var weekDay = (components.weekday ?? 1) - 1
-    if weekDay == 0 {
-        weekDay = 7
-    }
-    return weekDay
-}
-
 private let kScale = UIScreen.main.bounds.width / 375.0
 private let colors: [Int64] = [0xff1abc9c, 0xff2ecc71, 0xff3498db, 0xfff1c40f, 0xfff39c12, 0xffe67e22, 0xffcd84f1, 0xffffcccc, 0xffffb8b8, 0xfffffa65, 0xfffff200, 0xff32ff7e, 0xff67e6dc, 0xff18dcff, 0xff17c0eb, 0xfffc5c65, 0xffeb3b5a, 0xff2bcbba, 0xff0fb9b1, 0xff70a1ff, 0xff2ed573, 0xffff6b81, 0xff70a1ff, 0xffFDA7DF, 0xff12CBC4, 0xffC4E538, 0xff786fa6, 0xff63cdda, 0xffea8685, 0xffe66767]

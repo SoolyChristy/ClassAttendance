@@ -34,10 +34,11 @@ final class ClassManager {
         var classList = [Class]()
         for aClass in classes {
             var cl = aClass
-            let count = AttendanceManager.shared.getAttendanceCount(with: cl.id)
-            cl.absenteeismCount = count.absenteeismCount
-            cl.leaveCount = count.leaveCount
-            cl.lateCount = count.lateCount
+            let detail = AttendanceManager.shared.getAttendanceDetail(with: cl.id)
+            cl.absenteeismCount = detail.absenteeismCount
+            cl.leaveCount = detail.leaveCount
+            cl.lateCount = detail.lateCount
+            cl.records = detail.records
             classList.append(cl)
         }
         return classList
@@ -45,7 +46,7 @@ final class ClassManager {
     
     public func getToday(from classes: [Class]) -> [Class] {
         var todayClasses = [Class]()
-        let weekDay = getWeekDay()
+        let weekDay = DateUtils.getWeekDay()
         for aClass in classes {
             for classDate in aClass.dates {
                 if weekDay == classDate.week {

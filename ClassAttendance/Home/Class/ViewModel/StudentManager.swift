@@ -18,6 +18,21 @@ final class StudentManager {
         DatabaseManager.shared.update(objects: [student], handler: compeletionHandler)
     }
     
+    /// 返回带有考勤统计的学生list
+    public func get(with IDs: [ID], classId: String) -> [Student] {
+        var students = [Student]()
+        for id in IDs {
+            if var student: Student = get(with: id) {
+                if let records = AttendanceManager.shared.getRecords(with: classId) {
+                    makeFullStudent(&student, with: records)
+                }
+                students.append(student)
+            }
+        }
+        return students
+    }
+    
+    /// 返回无考勤统计学生list
     public func get(with IDs: [ID]) -> [Student] {
         var students = [Student]()
         for id in IDs {
@@ -28,6 +43,7 @@ final class StudentManager {
         return students
     }
     
+    /// 根据id返回无考勤统计学生
     public func get(with ID: ID) -> Student? {
         guard let student: Student = DatabaseManager.shared.getObject(where: Student.Properties.id == ID) else {
             printLog("查找学生失败")
@@ -64,5 +80,35 @@ final class StudentManager {
         }
         return [s1.id, s2.id, s3.id, s4.id, s5.id, s6.id, s7.id, s8.id, s9.id, s10.id, s11.id, s12.id, s13.id, s14.id, s15.id]
     }
+}
 
+extension StudentManager {
+    private func makeFullStudent(_ student: inout Student, with records: [AttendanceRecord]) {
+        var absenteeismCount = 0
+        var lateCount = 0
+        var leaveCount = 0
+        for record in records {
+            for id in record.absenteeism {
+                if id == student.id {
+                    absenteeismCount += 1
+                    break
+                }
+            }
+            for id in record.late {
+                if id == student.id {
+                    lateCount += 1
+                    break
+                }
+            }
+            for id in record.leave {
+                if id == student.id {
+                    leaveCount += 1
+                    break
+                }
+            }
+        }
+        student.absenteeismCount = absenteeismCount
+        student.lateCount = lateCount
+        student.leaveCount = leaveCount
+    }
 }

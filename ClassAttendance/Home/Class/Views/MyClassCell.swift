@@ -28,7 +28,7 @@ class MyClassCell: AnimationCell {
         leaveView.countLabel.text = "\(model.leaveCount)"
         if style == .today {
             for classDate in model.dates {
-                if classDate.week == getWeekDay() {
+                if classDate.week == DateUtils.getWeekDay() {
                     timeLabel.text = "上课时间：" + ClassTimeManager().classDateToString(classDate: classDate).date
                 }
             }

@@ -21,7 +21,6 @@ class ClassViewController: BaseViewController {
     
     init(class: Class, style: Style) {
         self.myClass = `class`
-        self.students = StudentManager.shared.get(with: myClass.students)
         self.style = style
         super.init(nibName: nil, bundle: nil)
     }
@@ -37,7 +36,8 @@ class ClassViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        students = StudentManager.shared.get(with: myClass.students)
+        students = StudentManager.shared.get(with: myClass.students, classId: myClass.id)
+        tableView.reloadData()
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     
@@ -132,7 +132,7 @@ class ClassViewController: BaseViewController {
     
     private let style: Style
     private var myClass: Class
-    private var students: [Student]
+    private var students = [Student]()
     private var attendance = [AttendanceType]()
     private lazy var callTheRollMgr: CallTheRollManager = CallTheRollManager(target: self, aClass: myClass)
     private let tableView = UITableView()

@@ -141,7 +141,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
                 make.right.equalTo(view).inset(kBigTitleMargin)
                 make.bottom.equalTo(label)
             })
-            let week = weeks[getWeekDay() - 1]
+            let week = weeks[DateUtils.getWeekDay() - 1]
             weekLabel.text = week
             label.text = "今日课程"
         case .myClass:

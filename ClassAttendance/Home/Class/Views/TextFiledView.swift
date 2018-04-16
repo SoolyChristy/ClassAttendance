@@ -65,7 +65,7 @@ final class TextFiledView: UIView {
         super.init(coder: aDecoder)
     }
     
-    @IBOutlet private weak var textFiled: UITextField!
+    @IBOutlet weak var textFiled: UITextField!
     @IBOutlet private weak var seperator: UIView!
     private var statusDidChangedHandler: (_ text: String) -> () = {_ in }
 }

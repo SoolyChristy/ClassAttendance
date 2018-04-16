@@ -60,15 +60,9 @@ class AttendanceManager: ManagerProtocol {
 
 extension AttendanceManager {
 
-    struct AttendanceCount {
-        let lateCount: Int
-        let leaveCount: Int
-        let absenteeismCount: Int
-    }
-
-    public func getAttendanceCount(with classID: ClassID) -> AttendanceCount {
+    public func getAttendanceDetail(with classID: ClassID) -> AttendanceDetail {
         guard let records = getRecords(with: classID) else {
-            return AttendanceCount(lateCount: 0, leaveCount: 0, absenteeismCount: 0)
+            return AttendanceDetail(records: [AttendanceRecord](), lateCount: 0, leaveCount: 0, absenteeismCount: 0)
         }
         var lateCount = 0
         var leaveCount = 0
@@ -78,7 +72,7 @@ extension AttendanceManager {
             leaveCount += record.leave.count
             absenteeismCount += record.absenteeism.count
         }
-        return AttendanceCount(lateCount: lateCount, leaveCount: leaveCount, absenteeismCount: absenteeismCount)
+        return AttendanceDetail(records: records, lateCount: lateCount, leaveCount: leaveCount, absenteeismCount: absenteeismCount)
     }
 }
 

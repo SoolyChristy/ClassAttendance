@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let maxAbsenteeismCount = 3
+
 protocol ClassStudentCellDelegate: NSObjectProtocol {
     func studentCell(_ cell: ClassStudentCell, didSelectedAttendance type: AttendanceType)
 }
@@ -27,6 +29,15 @@ class ClassStudentCell: UITableViewCell {
         iconView.image = UIImage(named: model.icon)
         nameLabel.text = model.name
         numberLabel.text = "\(model.id)"
+        if style == .edit {
+            absenteeismView.textLabel.text = "\(model.absenteeismCount)"
+            leaveView.textLabel.text = "\(model.leaveCount)"
+            lateView.textLabel.text = "\(model.lateCount)"
+            if model.absenteeismCount >= maxAbsenteeismCount {
+                absenteeismView.textLabel.textColor = .red
+            }
+        }
+        
         if let attendanceType = attendanceType {
             switch attendanceType {
             case .none:
@@ -90,6 +101,26 @@ class ClassStudentCell: UITableViewCell {
                 make.centerY.equalTo(contentView)
                 make.height.width.equalTo(leaveBtn)
             })
+        } else if style == .edit {
+            contentView.addSubview(leaveView)
+            leaveView.snp.makeConstraints({ (make) in
+                make.right.equalTo(contentView).inset(kBigTitleMargin)
+                make.centerY.equalTo(contentView)
+                make.height.equalTo(scale(iPhone8Design: 28))
+                make.width.equalTo(scale(iPhone8Design: 40))
+            })
+            contentView.addSubview(lateView)
+            lateView.snp.makeConstraints({ (make) in
+                make.right.equalTo(leaveView.snp.left).offset(-12)
+                make.centerY.equalTo(contentView)
+                make.height.width.equalTo(leaveView)
+            })
+            contentView.addSubview(absenteeismView)
+            absenteeismView.snp.makeConstraints({ (make) in
+                make.right.equalTo(lateView.snp.left).offset(scale(iPhone8Design: -12))
+                make.centerY.equalTo(contentView)
+                make.height.width.equalTo(leaveView)
+            })
         }
     }
     
@@ -133,6 +164,24 @@ class ClassStudentCell: UITableViewCell {
         btn.setImage(#imageLiteral(resourceName: "ic_leave_selected"), for: .selected)
         return btn
     }()
+    
+    private lazy var absenteeismView: AttendanceDetailView = {
+        let view = AttendanceDetailView()
+        view.iconView.image = #imageLiteral(resourceName: "ic_absenteeism")
+        return view
+    }()
+    
+    private lazy var lateView: AttendanceDetailView = {
+        let view = AttendanceDetailView()
+        view.iconView.image = #imageLiteral(resourceName: "ic_late")
+        return view
+    }()
+    
+    private lazy var leaveView: AttendanceDetailView = {
+        let view = AttendanceDetailView()
+        view.iconView.image = #imageLiteral(resourceName: "ic_leave")
+        return view
+    }()
 }
 
 extension ClassStudentCell {
@@ -161,5 +210,30 @@ extension ClassStudentCell {
         }
         printLog("\(student?.name ?? "") - 学号:\(student?.id ?? 0) \(type.description)")
         delegate?.studentCell(self, didSelectedAttendance: type)
+    }
+}
+
+fileprivate class AttendanceDetailView: UIView {
+    let iconView = UIImageView()
+    let textLabel = UILabel()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(iconView)
+        iconView.snp.makeConstraints { (make) in
+            make.right.equalTo(self.snp.centerX).offset(scale(iPhone8Design: -2))
+            make.centerY.equalTo(self)
+            make.width.height.equalTo(scale(iPhone8Design: 28))
+        }
+        textLabel.font = UIFont.systemFont(ofSize: scale(iPhone8Design: 15), weight: .medium)
+        addSubview(textLabel)
+        textLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self.snp.centerX).offset(scale(iPhone8Design: 2))
+            make.centerY.equalTo(self)
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

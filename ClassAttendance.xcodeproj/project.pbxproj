@@ -16,6 +16,8 @@
 		703F26B520810DE800AD7FB4 /* AttendanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703F26B420810DE800AD7FB4 /* AttendanceManager.swift */; };
 		7053F1E220613E1300CDB402 /* TextFiledView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7053F1E120613E1300CDB402 /* TextFiledView.xib */; };
 		7053F1E420613EA400CDB402 /* TextFiledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7053F1E320613EA400CDB402 /* TextFiledView.swift */; };
+		70562BBA2084794A004CF96F /* MyAttendanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70562BB92084794A004CF96F /* MyAttendanceController.swift */; };
+		70562BBC2084831E004CF96F /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70562BBB2084831E004CF96F /* DateUtils.swift */; };
 		708043112078A68C005F7675 /* ClassManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708043102078A68C005F7675 /* ClassManager.swift */; };
 		70863DAD2068C1200019CF27 /* ClassTimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DAC2068C1200019CF27 /* ClassTimeManager.swift */; };
 		70863E002068C5CD0019CF27 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DB12068C5CD0019CF27 /* Array+Extensions.swift */; };
@@ -131,6 +133,8 @@
 		703F26B420810DE800AD7FB4 /* AttendanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceManager.swift; sourceTree = "<group>"; };
 		7053F1E120613E1300CDB402 /* TextFiledView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFiledView.xib; sourceTree = "<group>"; };
 		7053F1E320613EA400CDB402 /* TextFiledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFiledView.swift; sourceTree = "<group>"; };
+		70562BB92084794A004CF96F /* MyAttendanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAttendanceController.swift; sourceTree = "<group>"; };
+		70562BBB2084831E004CF96F /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		708043102078A68C005F7675 /* ClassManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassManager.swift; sourceTree = "<group>"; };
 		70863DAC2068C1200019CF27 /* ClassTimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTimeManager.swift; sourceTree = "<group>"; };
 		70863DB12068C5CD0019CF27 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
@@ -569,6 +573,7 @@
 			children = (
 				709C8E192081D7E300AF1821 /* DetailViewController.swift */,
 				709C8E202081E39500AF1821 /* AttendanceRecordCell.swift */,
+				70562BB92084794A004CF96F /* MyAttendanceController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -718,6 +723,7 @@
 			children = (
 				70D8F29620593C3E0059A24E /* Constans.swift */,
 				709DF567207FACE600D3C522 /* Extensions.swift */,
+				70562BBB2084831E004CF96F /* DateUtils.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1055,6 +1061,7 @@
 				70863E152068C5CD0019CF27 /* ContactCell.swift in Sources */,
 				70863E012068C5CD0019CF27 /* Common+Extensions.swift in Sources */,
 				709C8E1A2081D7E300AF1821 /* DetailViewController.swift in Sources */,
+				70562BBA2084794A004CF96F /* MyAttendanceController.swift in Sources */,
 				709DF568207FACE600D3C522 /* Extensions.swift in Sources */,
 				70863E082068C5CD0019CF27 /* UIColor+Extensions.swift in Sources */,
 				70863E122068C5CD0019CF27 /* ContactsPickerViewController.swift in Sources */,
@@ -1093,6 +1100,7 @@
 				70863E032068C5CD0019CF27 /* Locale+Extensions.swift in Sources */,
 				70863E2A2068C5CD0019CF27 /* ItemWithPhoto.swift in Sources */,
 				70863E142068C5CD0019CF27 /* Contact.swift in Sources */,
+				70562BBC2084831E004CF96F /* DateUtils.swift in Sources */,
 				70CEADD02059593200CD2900 /* SignUpViewController.swift in Sources */,
 				70863E312068C5CD0019CF27 /* GradientSlider.swift in Sources */,
 				709DF566207F988400D3C522 /* CallTheRollManager.swift in Sources */,

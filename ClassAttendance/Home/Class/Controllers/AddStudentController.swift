@@ -43,6 +43,7 @@ class AddStudentController: BaseViewController {
             make.height.equalTo(scale(iPhone8Design: 17))
         }
         
+        idFiled.textFiled.keyboardType = .numberPad
         idFiled.placehoderLabel.text = "学号"
         view.addSubview(idFiled)
         idFiled.snp.makeConstraints { (make) in
@@ -51,6 +52,7 @@ class AddStudentController: BaseViewController {
             make.width.height.equalTo(nameFiled)
         }
         
+        phoneFiled.textFiled.keyboardType = .phonePad
         phoneFiled.placehoderLabel.text = "手机号码"
         view.addSubview(phoneFiled)
         phoneFiled.snp.makeConstraints { (make) in

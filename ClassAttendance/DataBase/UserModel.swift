@@ -78,6 +78,7 @@ struct Class: TableCodable {
     var lateCount: Int
     var leaveCount: Int
     var absenteeismCount: Int
+    var records: [AttendanceRecord]?
     
     init(name: String, lesson: String, icon: String, dates: [ClassDate], students: [ID]) {
         self.id = name + lesson
@@ -90,6 +91,7 @@ struct Class: TableCodable {
         self.lateCount = 0
         self.leaveCount = 0
         self.absenteeismCount = 0
+        self.records = [AttendanceRecord]()
     }
     
     enum CodingKeys: String, CodingTableKey {
@@ -105,6 +107,7 @@ struct Class: TableCodable {
         case lateCount
         case leaveCount
         case absenteeismCount
+        case records
         
         static var columnConstraintBindings: [CodingKeys: ColumnConstraintBinding]? {
             return [id: ColumnConstraintBinding(isPrimary: true)]
@@ -120,6 +123,9 @@ struct Student: TableCodable {
     var phone: Int
     var icon: String
     var sex: String
+    var absenteeismCount: Int
+    var lateCount: Int
+    var leaveCount: Int
 
     init(name: String, id: ID, phone: Int, icon: String = "ic_boy", sex: String) {
         self.name = name
@@ -127,6 +133,9 @@ struct Student: TableCodable {
         self.phone = phone
         self.icon = icon
         self.sex = sex
+        self.absenteeismCount = 0
+        self.lateCount = 0
+        self.leaveCount = 0
     }
 
     enum CodingKeys: String, CodingTableKey {
@@ -138,23 +147,13 @@ struct Student: TableCodable {
         case phone
         case icon
         case sex
+        case absenteeismCount
+        case lateCount
+        case leaveCount
 
         static var columnConstraintBindings: [CodingKeys: ColumnConstraintBinding]? {
             return [id: ColumnConstraintBinding(isPrimary: true)]
         }
-    }
-}
-
-/// 考勤原因
-struct AttendanceDetail: TableCodable {
-    var date: Date?
-    var info: String?
-
-    enum CodingKeys: String, CodingTableKey {
-        typealias Root = AttendanceDetail
-        static let objectRelationalMapping = TableBinding(CodingKeys.self)
-        case date
-        case info
     }
 }
 
@@ -192,6 +191,13 @@ struct AttendanceRecord: TableCodable {
         case leave
         case absenteeism
     }
+}
+
+struct AttendanceDetail {
+    let records: [AttendanceRecord]
+    let lateCount: Int
+    let leaveCount: Int
+    let absenteeismCount: Int
 }
 
 enum Sex: String, TableCodable {

@@ -11,9 +11,8 @@ import UIKit
 class AttendanceRecordCell: AnimationCell {
     
     public func update(model: AttendanceRecord) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        dateLabel.text = dateFormatter.string(from: model.date)
+
+        dateLabel.text = DateUtils.dateToString(date: model.date)
         classLabel.text = "班级: \(model.className)"
         lessonLabel.text = "课程: \(model.lessonName)"
         lateView.textLabel.text = "\(model.late.count)"
@@ -27,21 +26,21 @@ class AttendanceRecordCell: AnimationCell {
 //        container.backgroundColor = randomColor()
         dateLabel.textColor = .darkGray
         dateLabel.text = "2018年5月12日 11:30"
-        dateLabel.font = UIFont.systemFont(ofSize: scale(iPhone8Design: 14), weight: .medium)
+        dateLabel.font = UIFont.systemFont(ofSize: scale(iPhone8Design: 14), weight: .light)
         container.addSubview(dateLabel)
         dateLabel.snp.makeConstraints { (make) in
             make.left.equalTo(container).inset(scale(iPhone8Design: 6))
             make.top.equalTo(container).inset(scale(iPhone8Design: 6))
         }
         classLabel.text = "班级: 计科1401"
-        classLabel.font = UIFont.systemFont(ofSize: scale(iPhone8Design: 15), weight: .medium)
+        classLabel.font = UIFont.systemFont(ofSize: scale(iPhone8Design: 15), weight: .light)
         container.addSubview(classLabel)
         classLabel.snp.makeConstraints { (make) in
             make.top.equalTo(dateLabel.snp.bottom).offset(scale(iPhone8Design: 4))
             make.left.equalTo(dateLabel)
         }
         lessonLabel.text = "编译原理"
-        lessonLabel.font = UIFont.systemFont(ofSize: scale(iPhone8Design: 15), weight: .medium)
+        lessonLabel.font = UIFont.systemFont(ofSize: scale(iPhone8Design: 15), weight: .light)
         container.addSubview(lessonLabel)
         lessonLabel.snp.makeConstraints { (make) in
             make.top.equalTo(classLabel.snp.bottom).offset(scale(iPhone8Design: 4))

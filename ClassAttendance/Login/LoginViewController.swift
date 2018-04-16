@@ -45,6 +45,7 @@ class LoginViewController: BaseViewController {
         }
         
         passwordFiled.textField.delegate = self
+        passwordFiled.textField.isSecureTextEntry = true
         passwordFiled.textField.returnKeyType = .done
         view.addSubview(passwordFiled)
         passwordFiled.snp.makeConstraints { (make) in
