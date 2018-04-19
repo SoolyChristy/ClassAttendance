@@ -118,6 +118,7 @@ class ClassViewController: BaseViewController {
         tableView.dataSource = self
         tableView.bounces = false
         tableView.tableHeaderView = headerView
+        tableView.tableFooterView = UIView()
         tableView.rowHeight = scale(iPhone8Design: 60)
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in

@@ -89,6 +89,7 @@ class MyAttendanceController: BaseViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = scale(iPhone8Design: 60)
+        tableView.tableFooterView = UIView()
     }
     
     private let style: Style
@@ -138,6 +139,22 @@ extension MyAttendanceController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch Section(rawValue: section) ?? .max {
+        case .absenteeism:
+            if absenteeismStudents.count == 0 {
+                return UIView()
+            }
+        case .late:
+            if lateStudents.count == 0 {
+                return UIView()
+            }
+        case .leave:
+            if leaveStudents.count == 0 {
+                return UIView()
+            }
+        default:
+            break
+        }
         let view = UIView()
         view.backgroundColor = tableView.backgroundColor
         view.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: scale(iPhone8Design: 40))

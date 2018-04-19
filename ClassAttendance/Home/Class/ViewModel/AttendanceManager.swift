@@ -51,6 +51,19 @@ class AttendanceManager: ManagerProtocol {
     func delete(_ model: AttendanceRecord, compeletionHandler: @escaping (Result<DBError>) -> ()) {
         
     }
+    
+    public func delete(classID: ClassID, compeletionHandler: @escaping (Result<DBError>) -> ()) {
+        DatabaseManager.shared.delete(table: AttendanceRecord.self, where: AttendanceRecord.Properties.classId == classID) { (result) in
+            switch result {
+            case .success:
+                printLog("删除\(classID)班所有考勤表成功")
+                compeletionHandler(.success)
+            case .failure(let error):
+                printLog("删除\(classID)班所有考勤表失败")
+                compeletionHandler(.failure(error))
+            }
+        }
+    }
 
     typealias Model = AttendanceRecord
     typealias IDType = String

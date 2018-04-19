@@ -39,17 +39,26 @@ class HomeViewController: BaseViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        if let c = ClassManager.shared.getAll() {
-            classes = c
-            todayClasses = ClassManager.shared.getToday(from: classes)
-            tableView.reloadData()
-        }
+        prepareData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    private func prepareData() {
+        if let c = ClassManager.shared.getAll() {
+            classes = c
+            todayClasses = ClassManager.shared.getToday(from: classes)
+            tableView.reloadData()
+        } else {
+            navigationController?.pushViewController(CreatClassController(), animated: false)
+        }
+        if classes.count == 0 {
+            navigationController?.pushViewController(CreatClassController(), animated: false)
+        }
     }
     
     private func setupUI() {
@@ -78,6 +87,11 @@ class HomeViewController: BaseViewController {
 extension HomeViewController {
     @objc private func addClassBtnAction() {
         navigationController?.pushViewController(CreatClassController(), animated: true)
+    }
+    
+    @objc private func editBtnAction(btn: UIButton) {
+        btn.isSelected = !btn.isSelected
+        tableView.setEditing(btn.isSelected, animated: true)
     }
 }
 
@@ -122,9 +136,13 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let effect = UIBlurEffect(style: .light)
+        let visualView = UIVisualEffectView(effect: effect)
         let view = UIView()
+        view.addSubview(visualView)
         view.backgroundColor = tableView.backgroundColor
-        view.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: scale(iPhone8Design: 40))
+        view.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: scale(iPhone8Design: 30))
+        visualView.frame = view.frame
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: scale(iPhone8Design: 18), weight: .medium)
         view.addSubview(label)
@@ -146,6 +164,18 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             label.text = "今日课程"
         case .myClass:
             label.text = "我的课程"
+            let editBtn = UIButton()
+            editBtn.addTarget(self, action: #selector(editBtnAction(btn:)), for: .touchUpInside)
+            editBtn.setTitleColor(.black, for: .normal)
+            editBtn.setTitleColor(mainColor, for: .highlighted)
+            editBtn.setTitle("编辑", for: .normal)
+            editBtn.setTitle("完成", for: .selected)
+            editBtn.titleLabel?.font = UIFont.systemFont(ofSize: scale(iPhone8Design: 15), weight: .light)
+            view.addSubview(editBtn)
+            editBtn.snp.makeConstraints({ (make) in
+                make.right.equalTo(view).inset(kBigTitleMargin)
+                make.bottom.equalTo(view)
+            })
         default:
             break
         }
@@ -163,6 +193,32 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             navigationController?.pushViewController(vc, animated: true)
         default:
             break
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        let section = Section(rawValue: indexPath.section) ?? .max
+        return section == .myClass ? true : false
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "删除"
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let aClass = classes[indexPath.row]
+            view.makeToastActivity(.center)
+            ClassManager.shared.delete(aClass.id, compeletionHandler: { (result) in
+                switch result {
+                case .success:
+                    self.prepareData()
+                    self.view.hideToastActivity()
+                case .failure(_):
+                    self.view.hideToastActivity()
+                    self.view.makeToast("删除失败")
+                }
+            })
         }
     }
     

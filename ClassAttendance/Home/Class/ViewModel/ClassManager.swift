@@ -62,5 +62,23 @@ final class ClassManager {
     public func update(_ aClass: Class, compeletionHandler: @escaping Handler<DBError>) {
         DatabaseManager.shared.update(objects: [aClass], handler: compeletionHandler)
     }
+    
+    public func delete(_ classId: String, compeletionHandler: @escaping Handler<DBError>) {
+        DatabaseManager.shared.delete(table: Class.self, where: Class.Properties.id == classId) { (result) in
+            switch result {
+            case .success:
+                AttendanceManager.shared.delete(classID: classId, compeletionHandler: { (result) in
+                    switch result {
+                    case .success:
+                        compeletionHandler(.success)
+                    case .failure(let error):
+                        compeletionHandler(.failure(error))
+                    }
+                })
+            case .failure(let error):
+                compeletionHandler(.failure(error))
+            }
+        }
+    }
 
 }

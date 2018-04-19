@@ -162,6 +162,27 @@ extension DatabaseManager {
     }
 }
 
+// MARK: 删除
+extension DatabaseManager {
+    public func delete<Object: TableCodable>(table: Object.Type, where condition: Condition, handler: @escaping Handler<DBError>) {
+        guard let tableName = getTabel(Object: table) else {
+            printLog("tableType不合法")
+            return
+        }
+        delete(fromTable: tableName, where: condition) { (result) in
+            switch result {
+            case .success:
+                printLog("删除成功!")
+                handler(.success)
+            case .failure(let error):
+                printLog("删除失败! - \(error)")
+                let dbError: DBError = .unknown
+                handler(.failure(dbError))
+            }
+        }
+    }
+}
+
 // MARK: 查找
 extension DatabaseManager {
 
@@ -274,6 +295,15 @@ extension DatabaseManager {
             handler?(.success)
         } catch let error {
             handler?(.failure(error))
+        }
+    }
+    
+    private func delete(fromTable: String, where condition: Condition?, handler: Handler<Swift.Error>) {
+        do {
+            try dataBase.delete(fromTable: fromTable, where: condition, orderBy: nil, limit: nil, offset: nil)
+            handler(.success)
+        } catch let error {
+            handler(.failure(error))
         }
     }
 }

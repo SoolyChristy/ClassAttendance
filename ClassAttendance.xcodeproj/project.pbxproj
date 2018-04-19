@@ -18,6 +18,7 @@
 		7053F1E420613EA400CDB402 /* TextFiledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7053F1E320613EA400CDB402 /* TextFiledView.swift */; };
 		70562BBA2084794A004CF96F /* MyAttendanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70562BB92084794A004CF96F /* MyAttendanceController.swift */; };
 		70562BBC2084831E004CF96F /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70562BBB2084831E004CF96F /* DateUtils.swift */; };
+		705F33542084A77600A8074C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 705F33532084A77600A8074C /* LaunchScreen.storyboard */; };
 		708043112078A68C005F7675 /* ClassManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708043102078A68C005F7675 /* ClassManager.swift */; };
 		70863DAD2068C1200019CF27 /* ClassTimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DAC2068C1200019CF27 /* ClassTimeManager.swift */; };
 		70863E002068C5CD0019CF27 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70863DB12068C5CD0019CF27 /* Array+Extensions.swift */; };
@@ -85,7 +86,6 @@
 		70D7858E2057EE98002483F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D7858D2057EE98002483F1 /* AppDelegate.swift */; };
 		70D785932057EE98002483F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70D785912057EE98002483F1 /* Main.storyboard */; };
 		70D785952057EE98002483F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70D785942057EE98002483F1 /* Assets.xcassets */; };
-		70D785982057EE98002483F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70D785962057EE98002483F1 /* LaunchScreen.storyboard */; };
 		70D785A32057EE98002483F1 /* ClassAttendanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D785A22057EE98002483F1 /* ClassAttendanceTests.swift */; };
 		70D785AE2057EE99002483F1 /* ClassAttendanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D785AD2057EE99002483F1 /* ClassAttendanceUITests.swift */; };
 		70D785BF2057EF99002483F1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D785BE2057EF99002483F1 /* MainViewController.swift */; };
@@ -135,6 +135,7 @@
 		7053F1E320613EA400CDB402 /* TextFiledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFiledView.swift; sourceTree = "<group>"; };
 		70562BB92084794A004CF96F /* MyAttendanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAttendanceController.swift; sourceTree = "<group>"; };
 		70562BBB2084831E004CF96F /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		705F33532084A77600A8074C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		708043102078A68C005F7675 /* ClassManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassManager.swift; sourceTree = "<group>"; };
 		70863DAC2068C1200019CF27 /* ClassTimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTimeManager.swift; sourceTree = "<group>"; };
 		70863DB12068C5CD0019CF27 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
@@ -203,7 +204,6 @@
 		70D7858D2057EE98002483F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70D785922057EE98002483F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		70D785942057EE98002483F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		70D785972057EE98002483F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		70D785992057EE98002483F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70D7859E2057EE98002483F1 /* ClassAttendanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClassAttendanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		70D785A22057EE98002483F1 /* ClassAttendanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassAttendanceTests.swift; sourceTree = "<group>"; };
@@ -653,10 +653,10 @@
 				70D785BC2057EF7F002483F1 /* Home */,
 				709C8E1D2081DD9300AF1821 /* Commons */,
 				70D8F295205938A00059A24E /* Helpers */,
+				705F33532084A77600A8074C /* LaunchScreen.storyboard */,
 				70D7858D2057EE98002483F1 /* AppDelegate.swift */,
 				70D785912057EE98002483F1 /* Main.storyboard */,
 				70D785942057EE98002483F1 /* Assets.xcassets */,
-				70D785962057EE98002483F1 /* LaunchScreen.storyboard */,
 				70D785992057EE98002483F1 /* Info.plist */,
 			);
 			path = ClassAttendance;
@@ -867,8 +867,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				705F33542084A77600A8074C /* LaunchScreen.storyboard in Resources */,
 				7053F1E220613E1300CDB402 /* TextFiledView.xib in Resources */,
-				70D785982057EE98002483F1 /* LaunchScreen.storyboard in Resources */,
 				70D8F2A6205947870059A24E /* InputView.xib in Resources */,
 				70D785952057EE98002483F1 /* Assets.xcassets in Resources */,
 				70863E192068C5CD0019CF27 /* Countries.bundle in Resources */,
@@ -1181,14 +1181,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		70D785962057EE98002483F1 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				70D785972057EE98002483F1 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1307,6 +1299,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7523YW79F8;
 				INFOPLIST_FILE = ClassAttendance/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SoolyChristina.ClassAttendance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1323,6 +1316,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7523YW79F8;
 				INFOPLIST_FILE = ClassAttendance/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SoolyChristina.ClassAttendance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
