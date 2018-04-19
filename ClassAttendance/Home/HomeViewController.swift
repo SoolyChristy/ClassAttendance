@@ -140,7 +140,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         let visualView = UIVisualEffectView(effect: effect)
         let view = UIView()
         view.addSubview(visualView)
-        view.backgroundColor = tableView.backgroundColor
+//        view.backgroundColor = tableView.backgroundColor
         view.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: scale(iPhone8Design: 30))
         visualView.frame = view.frame
         let label = UILabel()
